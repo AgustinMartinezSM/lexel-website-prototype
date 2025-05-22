@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras - Lexel</title>
+    <meta name="description" content="Revisa los productos en tu carrito de compras en Lexel.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/carrito.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="icon" type="image/png" href="../images/logo/favicon-lexel.png"> </head>
+<body>
+<header class="site-header">
+    <div class="container header-container">
+        <div class="logo">
+            <a href="../index.html"><h1>LEXEL</h1></a>
+        </div>
+        <nav class="main-navigation">
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="reparaciones.html">Servicio Tecnico</a></li>
+                <li><a href="distribuidores.html">Distribuidores</a></li>
+                <li><a href="catalogo-mayorista.html">Catalogo Mayorista</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="blog.html">Blog</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <a href="carrito.html" class="cart-icon-link active-cart" aria-label="Ver carrito de compras">
+                <span class="cart-icon-header">🛒</span>
+                <span id="cartItemCount" class="cart-item-count">0</span>
+            </a>
+            <button id="darkModeToggle" class="dark-mode-toggle-btn" aria-label="Activar modo oscuro">
+                <span class="icon-moon">🌙</span><span class="icon-sun" style="display:none;">☀️</span>
+            </button>
+            <button class="menu-toggle" aria-label="Abrir menu">
+                <svg viewBox="0 0 100 80" width="30" height="30" fill="var(--azul-principal)"><rect width="100" height="15" rx="8"></rect><rect y="30" width="100" height="15" rx="8"></rect><rect y="60" width="100" height="15" rx="8"></rect></svg>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main class="pagina-carrito section-padding">
+    <div class="container">
+        <h1 class="section-title">Tu Carrito de Compras</h1>
+
+        <div id="carritoContenido">
+            <div id="carritoVacioMensaje" class="carrito-vacio" style="display: none;">
+                <p>Tu carrito esta vacio.</p>
+                <a href="productos.html" class="btn btn-primary">Ver Productos</a>
+            </div>
+
+            <div class="carrito-items-listado" id="carritoItemsContainer">
+            </div>
+
+            <div class="carrito-resumen-y-opciones" id="carritoResumenAcciones" style="display: none;">
+
+                <div class="columna-resumen">
+                    <div class="carrito-resumen">
+                        <h3>Resumen de Compra</h3>
+                        <div class="resumen-fila">
+                            <span>Subtotal:</span>
+                            <span id="carritoSubtotal">$0</span>
+                        </div>
+                        <div class="resumen-fila">
+                            <span>Envio:</span>
+                            <span id="opcionEnvioSeleccionada">A coordinar</span> </div>
+                        <div class="resumen-fila total-fila">
+                            <span>Total Estimado:</span>
+                            <span id="carritoTotalGeneral">$0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="columna-opciones">
+                    <div class="carrito-opciones-pedido">
+                        <h3>Completa tu Pedido</h3>
+                        <form id="pedidoOpcionesForm">
+                            <div class="form-grupo">
+                                <label for="pedidoNombre">Tu Nombre:</label>
+                                <input type="text" id="pedidoNombre" name="pedidoNombre" required placeholder="Ingresa tu nombre completo">
+                                <small class="mensaje-error"></small>
+                            </div>
+                            <div class="form-grupo">
+                                <label>Metodo de Pago Preferido:</label>
+                                <div class="opciones-radio-grupo">
+                                    <label><input type="radio" name="metodoPago" value="Efectivo" checked> Efectivo</label>
+                                    <label><input type="radio" name="metodoPago" value="Tarjeta"> Tarjeta (Debito/Credito 1 pago)</label>
+                                    <label><input type="radio" name="metodoPago" value="Transferencia"> Transferencia</label>
+                                </div>
+                            </div>
+                            <div class="form-grupo">
+                                <label>Forma de Entrega:</label>
+                                <div class="opciones-radio-grupo" id="opcionesEntrega">
+                                    <label><input type="radio" name="formaEntrega" value="Retiro Local MDP" checked> Retiro Local Mar del Plata</label>
+                                    <label><input type="radio" name="formaEntrega" value="Retiro Local Miramar"> Retiro Local Miramar</label>
+                                    <label><input type="radio" name="formaEntrega" value="Envio a Domicilio"> Envio a Domicilio (a coordinar)</label>
+                                </div>
+                            </div>
+                            <button type="button" id="generarMensajePedidoBtn" class="btn btn-primary btn-block">Siguiente: Preparar Mensaje</button>
+                            <div id="pedidoFormStatusMessage" class="form-status-message error" style="display: none;"></div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="carrito-acciones-finales" id="accionesEnvioMensaje" style="display: none;">
+                    <h4>¡Perfecto! Tu pedido está listo para ser enviado:</h4>
+                    <div class="mensaje-pedido-preview-container">
+                        <p><strong>Asi se vera tu mensaje:</strong></p>
+                        <textarea id="mensajePedidoPreview" rows="8" readonly></textarea>
+                    </div>
+                    <div class="botones-envio">
+                        <a href="#" id="enviarWhatsAppBtn" class="btn btn-success btn-wpp" target="_blank" rel="noopener noreferrer">
+                            <span class="icono-btn">📱</span> Enviar por WhatsApp
+                        </a>
+                        <a href="#" id="enviarEmailBtn" class="btn btn-secondary btn-email">
+                            <span class="icono-btn">✉️</span> Enviar por Email
+                        </a>
+                    </div>
+                    <button type="button" id="modificarPedidoBtn" class="btn btn-outline btn-sm-padding">Modificar Pedido</button>
+                </div>
+
+                <div class="carrito-acciones-generales">
+                    <a href="productos.html" class="btn btn-secondary">Seguir Comprando</a>
+                    <button id="vaciarCarritoBtn" class="btn btn-outline btn-vaciar">Vaciar Carrito</button>
+                </div>
+
+            </div> </div>
+    </div>
+</main>
+
+<footer class="site-footer section-padding-sm">
+    <div class="container"> <div class="footer-grid"> <div class="footer-column about-lexel"> <h4>Sobre Lexel</h4> <p>Tu tienda de confianza para productos electronicos, accesorios y servicio tecnico especializado en Mar del Plata y Miramar.</p> </div> <div class="footer-column quick-links"> <h4>Enlaces Rapidos</h4> <ul> <li><a href="../index.html">Inicio</a></li> <li><a href="productos.html">Productos</a></li> <li><a href="reparaciones.html">Servicio Tecnico</a></li> <li><a href="distribuidores.html">Distribuidores</a></li> <li><a href="nosotros.html">Nosotros</a></li> <li><a href="contacto.html">Contacto</a></li> <li><a href="blog.html">Blog</a></li> <li><a href="politica-privacidad.html">Politica de Privacidad</a></li> <li><a href="terminos-condiciones.html">Terminos y Condiciones</a></li> </ul> </div> <div class="footer-column contact-info"> <h4>Contacto</h4> <p>Mar del Plata: Cerrito N°28</p> <p>Miramar: Calle 21 N°1241</p> <p>Email: <a href="mailto:leonardosanguineri@gmail.com">leonardosanguineri@gmail.com</a></p> <p>Telefono: <a href="tel:+5492231234567">+54 9 223 5481073</a></p> </div> <div class="footer-column social-media"> <h4>Seguinos</h4> <a href="https://www.instagram.com/lexel_mdp/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Lexel"> <img src="../images/iconos/instagram-cir.png" alt="Instagram Lexel" style="width: 32px; height: 32px;"> <span>@lexel_mdp</span> </a> </div> </div> <div class="copyright"> <p>&copy; <span id="currentYear"></span> Lexel. Todos los derechos reservados. Diseñado por Agustin Martinez.</p> </div> </div>
+</footer>
+
+<script src="../js/productos-data.js"></script>
+<script src="../js/catalogo-mayorista-data.js"></script>
+<script src="../js/main.js"></script>
+</body>
+</html>

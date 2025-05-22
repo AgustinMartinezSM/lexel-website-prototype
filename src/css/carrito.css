@@ -1,0 +1,591 @@
+/* css/carrito.css */
+
+.pagina-carrito .section-title {
+    margin-bottom: 40px;
+}
+
+.carrito-vacio {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: var(--blanco-puro);
+    border-radius: var(--border-radius-general);
+    box-shadow: var(--box-shadow-suave);
+}
+.carrito-vacio p {
+    font-size: 1.2rem;
+    color: var(--gris-azulado-texto);
+    margin-bottom: 25px;
+}
+
+/* Estilos para la lista de items del carrito */
+.carrito-items-listado {
+    margin-bottom: 40px;
+}
+
+.carrito-item {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto auto; /* Imagen, Info, Cantidad, Subtotal, Remover */
+    gap: 15px;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--color-borde-general, #e0e0e0);
+}
+body.dark-mode .carrito-item {
+    border-bottom-color: var(--color-borde-general);
+}
+.carrito-item:last-child {
+    border-bottom: none;
+}
+
+.carrito-item-imagen img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid var(--color-borde-general, #eee);
+}
+body.dark-mode .carrito-item-imagen img {
+    border-color: var(--color-borde-general);
+}
+
+
+.carrito-item-info .item-nombre {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--negro-texto-principal);
+    margin-bottom: 5px;
+}
+.carrito-item-info .item-precio-unitario {
+    font-size: 0.9rem;
+    color: var(--gris-azulado-texto);
+}
+
+.carrito-item-cantidad {
+    display: flex;
+    align-items: center;
+}
+.carrito-item-cantidad label {
+    display: none; /* Ocultamos el label, los botones son intuitivos */
+}
+.carrito-item-cantidad .input-cantidad {
+    width: 45px;
+    text-align: center;
+    padding: 8px 5px;
+    border: 1px solid var(--color-borde-general, #ccc);
+    border-radius: 4px;
+    margin: 0 5px;
+    font-size: 0.95rem;
+    color: var(--negro-texto-principal);
+    background-color: var(--blanco-puro); /* Para modo oscuro */
+    -moz-appearance: textfield; /* Para Firefox */
+}
+.carrito-item-cantidad .input-cantidad::-webkit-outer-spin-button,
+.carrito-item-cantidad .input-cantidad::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+body.dark-mode .carrito-item-cantidad .input-cantidad {
+    border-color: var(--color-borde-general);
+}
+
+
+.carrito-item-cantidad .btn-cantidad {
+    background-color: var(--blanco-gris-claro); /* Fondo del boton */
+    border: 1px solid var(--color-borde-general, #ccc);
+    color: var(--negro-texto-principal);
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 1;
+}
+.carrito-item-cantidad .btn-cantidad:hover {
+    background-color: #e0e0e0; /* Un gris mas oscuro al hover */
+}
+body.dark-mode .carrito-item-cantidad .btn-cantidad {
+    background-color: var(--blanco-puro); /* Fondo de tarjeta */
+    border-color: var(--color-borde-general);
+    color: var(--negro-texto-principal); /* Texto claro */
+}
+body.dark-mode .carrito-item-cantidad .btn-cantidad:hover {
+    background-color: #2c2c2c; /* Un gris un poco mas oscuro que el fondo de tarjeta */
+}
+
+
+.carrito-item-subtotal .item-subtotal-valor {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--negro-texto-principal);
+}
+
+.carrito-item-remover .btn-remover-item {
+    background: none;
+    border: none;
+    color: #e74c3c; /* Rojo para eliminar */
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 5px;
+    line-height: 1;
+}
+.carrito-item-remover .btn-remover-item:hover {
+    color: #c0392b; /* Rojo mas oscuro */
+}
+body.dark-mode .carrito-item-remover .btn-remover-item {
+    color: #ff7961; /* Un rojo mas claro para dark mode */
+}
+body.dark-mode .carrito-item-remover .btn-remover-item:hover {
+    color: #f9463a;
+}
+
+
+/* Resumen del Carrito y Acciones */
+.carrito-resumen-acciones {
+    display: grid;
+    grid-template-columns: 1fr; /* Una columna en movil */
+    gap: 30px;
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 2px solid var(--azul-principal);
+}
+
+@media (min-width: 768px) {
+    .carrito-resumen-acciones {
+        grid-template-columns: 1fr 1fr; /* Dos columnas en desktop: resumen | acciones */
+        gap: 50px;
+    }
+}
+
+
+.carrito-resumen {
+    background-color: var(--blanco-gris-claro); /* Fondo suave para el resumen */
+    padding: 25px;
+    border-radius: var(--border-radius-general);
+}
+body.dark-mode .carrito-resumen {
+    background-color: var(--blanco-puro); /* Fondo de tarjeta en dark mode */
+}
+
+.carrito-resumen h3 {
+    font-size: 1.4rem;
+    color: var(--azul-principal);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.resumen-fila {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    font-size: 1rem;
+}
+.resumen-fila span:first-child {
+    color: var(--gris-azulado-texto);
+}
+.resumen-fila span:last-child {
+    font-weight: 500;
+    color: var(--negro-texto-principal);
+}
+.resumen-fila.total-fila span {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--azul-principal); /* Total destacado */
+}
+body.dark-mode .resumen-fila.total-fila span {
+    color: var(--amarillo-principal); /* Total destacado en amarillo en dark mode */
+}
+
+.carrito-acciones {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.carrito-acciones .btn,
+.carrito-acciones a.btn { /* Para que los botones y enlaces con clase btn ocupen toodo el ancho */
+    width: 100%;
+    text-align: center;
+    display: block; /* Para que width 100% funcione */
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.btn-vaciar { /* Boton "Vaciar Carrito" */
+    /* Ya tiene .btn-outline, podemos anadir algo especifico si queremos */
+    /* color: #e74c3c; */ /* Podria ser rojo si es outline */
+    /* border-color: #e74c3c; */
+}
+
+/* --- NUEVO LAYOUT PARA RESUMEN Y OPCIONES --- */
+.carrito-resumen-y-opciones {
+    display: grid;
+    grid-template-columns: 1fr; /* Una columna por defecto */
+    gap: 30px; /* Espacio entre resumen y opciones en movil */
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 2px solid var(--azul-principal);
+}
+
+@media (min-width: 992px) { /* Dos columnas para desktop */
+    .carrito-resumen-y-opciones {
+        grid-template-columns: 1fr 1.5fr; /* Resumen | Opciones (mas ancha) */
+        gap: 40px;
+    }
+    .columna-resumen {
+        /* Podria tener un sticky top si la columna de opciones es muy larga */
+        /* position: sticky; top: 100px; */
+    }
+}
+
+/* Resumen de Compra (ya tenias estilos, asegurar que se vean bien) */
+.carrito-resumen {
+    background-color: var(--blanco-gris-claro);
+    padding: 25px;
+    border-radius: var(--border-radius-general);
+}
+body.dark-mode .carrito-resumen {
+    background-color: var(--blanco-puro);
+}
+.carrito-resumen h3 {
+    font-size: 1.4rem;
+    color: var(--azul-principal);
+    margin-bottom: 20px;
+    text-align: left; /* Alinear a la izquierda */
+}
+.resumen-fila {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    font-size: 1rem;
+}
+.resumen-fila span:first-child {
+    color: var(--gris-azulado-texto);
+}
+.resumen-fila span:last-child {
+    font-weight: 500;
+    color: var(--negro-texto-principal);
+}
+.resumen-fila.total-fila span {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--azul-principal);
+}
+body.dark-mode .resumen-fila.total-fila span {
+    color: var(--amarillo-principal);
+}
+
+
+/* --- Seccion de Opciones del Pedido --- */
+.carrito-opciones-pedido {
+    background-color: var(--blanco-puro);
+    padding: 25px;
+    border-radius: var(--border-radius-general);
+    box-shadow: var(--box-shadow-suave);
+}
+body.dark-mode .carrito-opciones-pedido {
+    background-color: var(--blanco-puro); /* El color oscuro de tarjeta */
+}
+
+.carrito-opciones-pedido h3 {
+    font-size: 1.4rem;
+    color: var(--azul-principal);
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+#pedidoOpcionesForm .form-grupo {
+    margin-bottom: 20px;
+}
+#pedidoOpcionesForm .form-grupo label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--negro-texto-principal);
+    font-size: 0.95rem;
+}
+body.dark-mode #pedidoOpcionesForm .form-grupo label {
+    color: var(--negro-texto-principal);
+}
+
+#pedidoOpcionesForm input[type="text"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--color-borde-general, #ccc);
+    border-radius: var(--border-radius-general);
+    font-family: var(--fuente-principal);
+    font-size: 1rem;
+    color: var(--negro-texto-principal);
+    background-color: var(--blanco-puro);
+}
+body.dark-mode #pedidoOpcionesForm input[type="text"] {
+    background-color: var(--blanco-gris-claro);
+    color: var(--negro-texto-principal);
+    border-color: var(--color-borde-general);
+}
+#pedidoOpcionesForm input[type="text"]:focus {
+    border-color: var(--azul-principal);
+    box-shadow: 0 0 0 3px rgba(var(--azul-principal-rgb), 0.2);
+    outline: none;
+}
+
+.opciones-radio-grupo label {
+    display: block;
+    margin-bottom: 10px; /* Mas espacio entre opciones de radio */
+    font-size: 0.95rem;
+    color: var(--gris-azulado-texto);
+    cursor: pointer;
+    padding: 8px 10px; /* Padding para hacer toda la etiqueta clickeable */
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+.opciones-radio-grupo label:hover {
+    background-color: rgba(var(--azul-principal-rgb), 0.05);
+}
+body.dark-mode .opciones-radio-grupo label {
+    color: var(--gris-azulado-texto);
+}
+body.dark-mode .opciones-radio-grupo label:hover {
+    background-color: rgba(var(--azul-principal-rgb), 0.1);
+}
+
+.opciones-radio-grupo input[type="radio"] {
+    margin-right: 10px; /* Espacio entre radio y texto */
+    accent-color: var(--azul-principal);
+    transform: scale(1.1);
+    vertical-align: middle;
+}
+
+#pedidoOpcionesForm .btn-block {
+    width: 100%;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    font-size: 1.05rem;
+    margin-top: 10px; /* Espacio arriba del boton */
+}
+
+#pedidoFormStatusMessage.form-status-message.error {
+    margin-top: 15px;
+}
+
+/* --- Seccion de Acciones Finales de Envio --- */
+.carrito-acciones-finales {
+    margin-top: 30px;
+    padding: 25px;
+    background-color: var(--blanco-gris-claro); /* Fondo diferente */
+    border-radius: var(--border-radius-general);
+    text-align: center;
+    border-top: 2px dashed var(--amarillo-principal);
+}
+body.dark-mode .carrito-acciones-finales {
+    background-color: var(--blanco-puro); /* Fondo de tarjeta oscuro */
+    border-top-color: var(--amarillo-principal);
+}
+
+.carrito-acciones-finales h4 {
+    font-size: 1.3rem; /* Mas grande */
+    color: var(--azul-principal);
+    margin-bottom: 20px;
+}
+
+.mensaje-pedido-preview-container {
+    margin-bottom: 25px;
+    text-align: left;
+}
+.mensaje-pedido-preview-container p strong {
+    font-size: 0.9rem;
+    color: var(--gris-azulado-texto);
+    display: block;
+    margin-bottom: 5px;
+}
+
+#mensajePedidoPreview { /* Textarea para la vista previa */
+    width: 100%;
+    background-color: var(--blanco-puro);
+    padding: 15px;
+    border-radius: 6px;
+    white-space: pre-wrap;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    border: 1px solid var(--color-borde-general, #ddd);
+    max-height: 200px;
+    overflow-y: auto;
+    font-family: monospace; /* Para que se vea como texto plano */
+    color: var(--negro-texto-principal);
+}
+body.dark-mode #mensajePedidoPreview {
+    background-color: var(--blanco-gris-claro); /* Fondo de input oscuro */
+    color: var(--negro-texto-principal);
+    border-color: var(--color-borde-general);
+}
+
+
+.botones-envio {
+    display: flex;
+    flex-direction: column; /* Apilados en movil */
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+@media (min-width: 576px) { /* Lado a lado en pantallas un poco mas grandes */
+    .botones-envio {
+        flex-direction: row;
+        justify-content: center;
+    }
+    .botones-envio .btn {
+        flex-grow: 1; /* Para que ocupen el espacio disponible */
+        max-width: 280px; /* Un ancho maximo para cada boton */
+    }
+}
+
+
+.btn-wpp, .btn-email {
+    display: inline-flex; /* Para alinear icono y texto */
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    padding: 10px 15px !important; /* Sobrescribir padding de .btn si es necesario */
+}
+.btn-wpp .icono-btn,
+.btn-email .icono-btn {
+    margin-right: 8px;
+    font-size: 1.2rem;
+}
+.btn-wpp { /* Estilo especifico para el boton de WhatsApp */
+    /* .btn-success ya esta definido en admin-page.css. Si no, definirlo en style.css */
+    /* background-color: #25D366; */ /* Color WhatsApp */
+    /* color: white; */
+    /* border-color: #25D366; */
+}
+/* .btn-wpp:hover { background-color: #1DA851; border-color: #1DA851; } */
+
+
+/* Acciones Generales del Carrito (Vaciar, Seguir Comprando) */
+.carrito-acciones-generales {
+    margin-top: 40px; /* Mas separacion */
+    padding-top: 30px;
+    border-top: 1px solid var(--color-borde-general, #eee);
+    display: flex;
+    justify-content: space-between; /* Seguir comprando a la izq, vaciar a la der */
+    align-items: center;
+    flex-wrap: wrap; /* Para moviles */
+    gap: 15px;
+}
+body.dark-mode .carrito-acciones-generales {
+    border-top-color: var(--color-borde-general);
+}
+
+
+.btn-vaciar { /* Boton "Vaciar Carrito" */
+    /* Ya tiene .btn-outline. Podemos anadirle color rojo si queremos mas enfasis */
+    /* color: #e74c3c; */
+    /* border-color: #e74c3c; */
+}
+/* body.dark-mode .btn-vaciar { color: #ff7961; border-color: #ff7961; } */
+
+.mensaje-guia-envio {
+    font-size: 0.85rem;
+    color: var(--gris-azulado-texto); /* O un color que se lea bien */
+    margin-top: 15px; /* Espacio arriba del mensaje */
+    text-align: center;
+    line-height: 1.4;
+    max-width: 400px; /* Para que no sea muy ancho */
+    margin-left: auto;
+    margin-right: auto;
+}
+body.dark-mode .mensaje-guia-envio {
+    color: var(--gris-azulado-texto); /* El gris claro del modo oscuro */
+}
+.mensaje-guia-envio strong {
+    color: var(--negro-texto-principal); /* Para resaltar "completar el envio" */
+}
+body.dark-mode .mensaje-guia-envio strong {
+    color: var(--negro-texto-principal); /* El texto claro del modo oscuro */
+}
+
+
+/* Responsividad general para el layout de resumen y opciones */
+@media (max-width: 991px) { /* Cuando pasa a una columna */
+    .carrito-opciones-pedido {
+        margin-top: 0; /* No necesita margen si esta debajo del resumen */
+    }
+    .carrito-acciones-finales {
+        grid-column: 1 / -1; /* Asegurar que ocupe toodo el ancho si estaba en grid */
+    }
+}
+
+@media (max-width: 480px) {
+    .carrito-opciones-pedido, .carrito-resumen, .carrito-acciones-finales {
+        padding: 20px; /* Menos padding en moviles */
+    }
+}
+
+
+/* Responsividad para la tabla/lista de items del carrito */
+@media (max-width: 767px) {
+    .carrito-item {
+        grid-template-columns: 80px 1fr; /* Imagen | Info+Cantidad+Subtotal+Remover */
+        grid-template-rows: auto auto auto; /* Filas para info, cantidad, subtotal/remover */
+        column-gap: 15px;
+        row-gap: 10px; /* Espacio entre filas internas */
+        align-items: flex-start; /* Alinear al inicio */
+    }
+    .carrito-item-imagen {
+        grid-row: 1 / span 3; /* Imagen ocupa 3 filas */
+    }
+    .carrito-item-info {
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+    }
+    .carrito-item-cantidad {
+        grid-column: 2 / 3;
+        grid-row: 2 / 3;
+        justify-content: flex-start; /* Alinear botones de cantidad a la izquierda */
+    }
+    .carrito-item-subtotal {
+        grid-column: 2 / 3;
+        grid-row: 3 / 4;
+        text-align: left; /* Subtotal a la izquierda */
+    }
+    .carrito-item-remover {
+        grid-column: 2 / 3; /* O ponerlo al final de .carrito-item-info, o en la imagen */
+        grid-row: 1 / 2; /* Al lado del nombre */
+        justify-self: flex-end; /* Boton remover a la derecha de la info */
+        align-self: flex-start;
+    }
+    .carrito-item-subtotal p { /* Para que no diga "Subtotal:" en movil */
+        display: flex;
+        flex-direction: column;
+    }
+     .carrito-item-subtotal .item-subtotal-valor::before {
+        content: "Subtotal: ";
+        font-weight: normal;
+        color: var(--gris-azulado-texto);
+        font-size: 0.9rem;
+        margin-right: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .carrito-item-info .item-nombre {
+        font-size: 1rem;
+    }
+    .carrito-item-subtotal .item-subtotal-valor,
+    .carrito-item-info .item-precio-unitario {
+        font-size: 0.9rem;
+    }
+     .carrito-item-cantidad .input-cantidad {
+        width: 35px;
+        padding: 6px 3px;
+    }
+    .carrito-item-cantidad .btn-cantidad {
+        padding: 5px 8px;
+    }
+}
+
+/* Para destacar el icono del carrito en el header si estamos en la pagina del carrito */
+.cart-icon-link.active-cart .cart-icon-header {
+    /* color: var(--amarillo-principal); Podria ser amarillo */
+    /* O anadir un borde sutil al link */
+}
+.cart-icon-link.active-cart .cart-item-count {
+    transform: scale(1.15); /* Hacer el contador un poco mas grande */
+}

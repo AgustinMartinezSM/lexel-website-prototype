@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogo Mayorista - Accesorios y Repuestos - Lexel</title>
+    <meta name="description" content="Accede a nuestro catalogo mayorista de fundas, vidrios templados, repuestos y accesorios para celulares. Precios especiales para distribuidores.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/catalogo-mayorista.css"> <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="icon" type="image/png" href="../images/logo/favicon-lexel.png">
+</head>
+<body>
+<header class="site-header">
+    <div class="container header-container">
+        <div class="logo">
+            <a href="../index.html"> <h1>LEXEL</h1>
+            </a>
+        </div>
+
+        <nav class="main-navigation">
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li> <li><a href="reparaciones.html">Servicio Tecnico</a></li>
+                <li><a href="distribuidores.html">Distribuidores</a></li>
+                <li><a href="catalogo-mayorista.html">Catalogo Mayorista</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="blog.html">Blog</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-actions">
+            <a href="carrito.html" class="cart-icon-link" aria-label="Ver carrito de compras"> <span class="cart-icon-header">🛒</span>
+                <span id="cartItemCount" class="cart-item-count">0</span>
+            </a>
+            <button id="darkModeToggle" class="dark-mode-toggle-btn" aria-label="Activar modo oscuro">
+                <span class="icon-moon">🌙</span>
+                <span class="icon-sun" style="display:none;">☀️</span>
+            </button>
+            <button class="menu-toggle" aria-label="Abrir menu">
+                <svg viewBox="0 0 100 80" width="30" height="30" fill="var(--azul-principal)">
+                    <rect width="100" height="15" rx="8"></rect>
+                    <rect y="30" width="100" height="15" rx="8"></rect>
+                    <rect y="60" width="100" height="15" rx="8"></rect>
+                </svg>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main class="pagina-catalogo-mayorista section-padding">
+    <div class="container">
+        <h1 class="section-title">Catalogo Mayorista de Accesorios y Repuestos</h1>
+        <p class="subtitulo-pagina">Encuentra los insumos que necesitas para tu negocio. Precios y condiciones especiales para distribuidores registrados.</p>
+
+        <div class="busqueda-catalogo-container">
+            <input type="search" id="searchCatalogoInput" placeholder="Buscar por articulo, modelo, marca, tipo de repuesto...">
+        </div>
+
+        <div class="catalogo-mayorista-layout">
+            <aside class="catalogo-sidebar">
+                <div class="widget-sidebar" id="widgetFiltroTipoArticulo">
+                    <h3 class="widget-title">Tipo de Articulo</h3>
+                    <ul class="lista-filtros">
+                        <li><label><input type="radio" name="filtroTipoArticulo" value="todos" checked> Todos</label></li>
+                        <li><label><input type="radio" name="filtroTipoArticulo" value="funda"> Fundas</label></li>
+                        <li><label><input type="radio" name="filtroTipoArticulo" value="templado"> Templados</label></li>
+                        <li><label><input type="radio" name="filtroTipoArticulo" value="repuesto"> Repuestos</label></li>
+                    </ul>
+                </div>
+                <div class="widget-sidebar" id="widgetFiltroMarcaCelular">
+                    <h3 class="widget-title">Marca de Celular</h3>
+                    <select id="selectMarcaCelular">
+                        <option value="todas">Todas las Marcas</option>
+                    </select>
+                </div>
+                <div class="widget-sidebar" id="widgetFiltroModeloCelular">
+                    <h3 class="widget-title">Modelo de Celular</h3>
+                    <input type="text" id="inputModeloCelular" placeholder="Ej: A14, iPhone 13, Moto G52">
+                </div>
+                <div class="widget-sidebar" id="widgetFiltroTipoRepuesto" style="display:none;"> {/* Oculto por defecto */}
+                    <h3 class="widget-title">Tipo de Repuesto</h3>
+                    <select id="selectTipoRepuesto">
+                        <option value="todos">Todos los Tipos</option>
+                    </select>
+                </div>
+                <div class="widget-sidebar widget-limpiar-filtros">
+                    <button id="limpiarFiltrosCatalogoBtn" class="btn btn-outline">Limpiar Filtros</button>
+                </div>
+            </aside>
+
+            <section class="catalogo-grilla-principal">
+                <div class="catalogo-header-grilla">
+                    <p class="cantidad-resultados-catalogo">Mostrando articulos...</p>
+                    <div class="ordenar-catalogo">
+                        <label for="ordenarCatalogo">Ordenar por:</label>
+                        <select id="ordenarCatalogo">
+                            <option value="defecto">Relevancia</option>
+                            <option value="nombre-asc">Nombre: A-Z</option>
+                            <option value="nombre-desc">Nombre: Z-A</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="items-grid" id="catalogoMayoristaGrid">
+                </div>
+                <nav class="paginacion" id="paginacionCatalogo">
+                    <ul>
+                    </ul>
+                </nav>
+            </section>
+        </div>
+    </div>
+</main>
+
+<footer class="site-footer section-padding-sm">
+    <div class="container"> <div class="footer-grid"> <div class="footer-column about-lexel"> <h4>Sobre Lexel</h4> <p>Tu tienda de confianza para productos electronicos, accesorios y servicio tecnico especializado en Mar del Plata y Miramar.</p> </div> <div class="footer-column quick-links"> <h4>Enlaces Rapidos</h4> <ul> <li><a href="../index.html">Inicio</a></li> <li><a href="productos.html">Productos</a></li> <li><a href="reparaciones.html">Servicio Tecnico</a></li> <li><a href="distribuidores.html">Distribuidores</a></li> <li><a href="nosotros.html">Nosotros</a></li> <li><a href="contacto.html">Contacto</a></li> <li><a href="blog.html">Blog</a></li> <li><a href="politica-privacidad.html">Politica de Privacidad</a></li> <li><a href="terminos-condiciones.html">Terminos y Condiciones</a></li> </ul> </div> <div class="footer-column contact-info"> <h4>Contacto</h4> <p>Mar del Plata: Cerrito N°28</p> <p>Miramar: Calle 21 N°1241</p> <p>Email: <a href="mailto:leonardosanguineri@gmail.com">leonardosanguineri@gmail.com</a></p> <p>Telefono: <a href="tel:+5492231234567">+54 9 223 5481073</a></p> </div> <div class="footer-column social-media"> <h4>Seguinos</h4> <a href="https://www.instagram.com/lexel_mdp/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Lexel"> <img src="../images/iconos/instagram-cir.png" alt="Instagram Lexel" style="width: 32px; height: 32px;"> <span>@lexel_mdp</span> </a> </div> </div> <div class="copyright"> <p>&copy; <span id="currentYear"></span> Lexel. Todos los derechos reservados. Diseñado por Agustin Martinez.</p> </div> </div>
+</footer>
+
+<script src="../js/catalogo-mayorista-data.js"></script> <script src="../js/productos-data.js"></script> <script src="../js/main.js"></script>
+</body>
+</html>

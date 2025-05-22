@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+          content="Catalogo de productos electronicos de Lexel - Smartphones, consolas, accesorios y mas en Mar del Plata y Miramar.">
+    <title>Nuestros Productos - Lexel</title>
+    <link rel="icon" type="image/png" href="../images/logo/favicon-lexel.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Roboto:wght@400;500;700&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/productos.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+
+<body>
+<header class="site-header">
+    <div class="container header-container">
+        <div class="logo">
+            <a href="../index.html"> <h1>LEXEL</h1>
+            </a>
+        </div>
+
+        <nav class="main-navigation">
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li> <li><a href="reparaciones.html">Servicio Tecnico</a></li>
+                <li><a href="distribuidores.html">Distribuidores</a></li>
+                <li><a href="catalogo-mayorista.html">Catalogo Mayorista</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="blog.html">Blog</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-actions">
+            <a href="carrito.html" class="cart-icon-link" aria-label="Ver carrito de compras"> <span class="cart-icon-header">🛒</span>
+                <span id="cartItemCount" class="cart-item-count">0</span>
+            </a>
+            <button id="darkModeToggle" class="dark-mode-toggle-btn" aria-label="Activar modo oscuro">
+                <span class="icon-moon">🌙</span>
+                <span class="icon-sun" style="display:none;">☀️</span>
+            </button>
+            <button class="menu-toggle" aria-label="Abrir menu">
+                <svg viewBox="0 0 100 80" width="30" height="30" fill="var(--azul-principal)">
+                    <rect width="100" height="15" rx="8"></rect>
+                    <rect y="30" width="100" height="15" rx="8"></rect>
+                    <rect y="60" width="100" height="15" rx="8"></rect>
+                </svg>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main class="pagina-productos section-padding">
+    <div class="container">
+        <h1 class="section-title">Nuestros Productos</h1>
+
+        <div class="busqueda-productos-container">
+            <input type="search" id="searchInput" placeholder="Buscar por nombre, marca, categoria...">
+        </div>
+
+        <div class="productos-layout">
+            <aside class="productos-sidebar">
+                <div class="widget-sidebar">
+                    <h3 class="widget-title">Categorias</h3>
+                    <ul class="lista-categorias">
+                        <li><a href="#" data-category="todos">Todos los Productos</a></li>
+                        <li><a href="#" data-category="celulares">Celulares</a></li>
+                        <li><a href="#" data-category="accesorios">Accesorios para Celulares</a></li>
+                        <li><a href="#" data-category="consolas">Consolas y Videojuegos</a></li>
+                        <li><a href="#" data-category="audio">Audio y Parlantes</a></li>
+                        <li><a href="#" data-category="computacion">Computacion</a></li>
+                        <li><a href="#" data-category="wearables">Smartwatches y Wearables</a></li>
+                    </ul>
+                </div>
+
+                <div class="widget-sidebar"><h3 class="widget-title">Filtrar por Marca</h3>
+                    <ul class="lista-filtros" id="filtrosMarca">
+                        <li><label><input type="checkbox" name="marca" value="TechNova"> Samsung</label></li>
+                        <li><label><input type="checkbox" name="marca" value="Nintendo"> Nintendo</label></li>
+                        <li><label><input type="checkbox" name="marca" value="SoundWave"> SoundWave</label></li>
+                        <li><label><input type="checkbox" name="marca" value="PowerUp"> Iphone</label></li>
+                        <li><label><input type="checkbox" name="marca" value="FitTech"> FitTech</label></li>
+                        <li><label><input type="checkbox" name="marca" value="GameMax"> GameMax</label></li>
+                        <li><label><input type="checkbox" name="marca" value="OfficePro"> OfficePro</label></li>
+                    </ul>
+                </div>
+
+                <div class="widget-sidebar">
+                    <h3 class="widget-title">Rango de Precio</h3>
+                    <div class="filtro-precio-controles">
+                        <label for="precioMin">Precio Minimo:</label>
+                        <input type="number" id="precioMin" placeholder="Ej: 10000">
+
+                        <label for="precioMax">Precio Maximo:</label>
+                        <input type="number" id="precioMax" placeholder="Ej: 200000">
+
+                        <button id="btnAplicarPrecio" class="btn btn-primary btn-block-sidebar">Aplicar Precio</button>
+                    </div>
+
+                </div>
+            </aside>
+
+            <section class="productos-grilla-principal">
+                <div class="productos-header-grilla">
+                    <p class="cantidad-resultados">Mostrando productos...</p>
+                    <button id="limpiarFiltrosBtn" class="btn btn-outline btn-limpiar-filtros-header">Limpiar Filtros</button>
+                    <div class="ordenar-productos">
+                        <label for="ordenarProductos">Ordenar por:</label>
+                        <select name="ordenar" id="ordenarProductos">
+                            <option value="defecto">Por Defecto</option>
+                            <option value="precio-asc">Precio: Menor a Mayor</option>
+                            <option value="precio-desc">Precio: Mayor a Menor</option>
+                            <option value="nombre-asc">Nombre: A-Z</option>
+                            <option value="nombre-desc">Nombre: Z-A</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="products-grid" id="productsGridContainer">
+                </div>
+
+                <nav class="paginacion" id="paginacionProductos">
+                    <ul>
+                        <li><a href="#" class="prev disabled">&laquo; Anterior</a></li>
+                        <li><a href="#" class="active">1</a></li>
+                        <li><a href="#" class="next">Siguiente &raquo;</a></li>
+                    </ul>
+                </nav>
+            </section>
+        </div>
+    </div>
+</main>
+
+<footer class="site-footer section-padding-sm">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-column about-lexel">
+                <h4>Sobre Lexel</h4>
+                <p>Tu tienda de confianza para productos electronicos, accesorios y servicio tecnico especializado en
+                    Mar del Plata y Miramar.</p>
+            </div>
+            <div class="footer-column quick-links">
+                <h4>Enlaces Rapidos</h4>
+                <ul>
+                    <li><a href="../index.html">Inicio</a></li>
+                    <li><a href="productos.html">Productos</a></li>
+                    <li><a href="reparaciones.html">Servicio Tecnico</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                    <li><a href="politica-privacidad.html">Politica de Privacidad</a></li>
+                    <li><a href="terminos-condiciones.html">Terminos y Condiciones</a></li>
+                </ul>
+            </div>
+            <div class="footer-column contact-info">
+                <h4>Contacto</h4>
+                <p>Mar del Plata: Cerrito N°28</p>
+                <p>Miramar: Calle 21 N°1241</p>
+                <p>Email: <a href="mailto:leonardosanguineri@gmail.com">leonardosanguineri@gmail.com</a></p>
+                <p>Telefono: <a href="tel:+5492231234567">+54 9 223 5481073</a></p>
+            </div>
+            <div class="footer-column social-media">
+                <h4>Seguinos</h4>
+                <a href="https://www.instagram.com/lexel_mdp/" target="_blank" rel="noopener noreferrer"
+                   aria-label="Instagram de Lexel">
+                    <img src="../images/iconos/instagram-cir.png" alt="Instagram Lexel" style="width: 32px; height: 32px;">
+                    <span>@lexel_mdp</span>
+                </a>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; <span id="currentYear"></span> Lexel. Todos los derechos reservados. Diseñado por Agustin Martinez</p>
+        </div>
+    </div>
+</footer>
+
+<script src="/js/productos-data.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

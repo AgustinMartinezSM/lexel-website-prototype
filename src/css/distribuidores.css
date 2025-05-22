@@ -1,0 +1,277 @@
+/* css/distribuidores.css */
+
+.pagina-distribuidores .section-title {
+    margin-bottom: 20px;
+}
+
+.pagina-distribuidores .subtitulo-pagina {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--gris-azulado-texto);
+    margin-bottom: 50px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
+}
+
+.sub-section-title { /* Reutilizamos este estilo, ya deberia estar en reparaciones.css o style.css global */
+    /* Si no esta global, copiar de reparaciones.css */
+    /* font-size: 1.9rem;
+    color: var(--azul-principal);
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+    padding-bottom: 12px; */
+}
+/* .sub-section-title::after { ... } */
+
+
+/* --- Seccion Beneficios --- */
+.beneficios-distribuidores {
+    margin-bottom: 50px;
+    padding: 20px 0;
+}
+
+.beneficios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+}
+
+.beneficio-item {
+    background-color: var(--blanco-puro);
+    padding: 25px;
+    border-radius: var(--border-radius-general);
+    /* box-shadow: var(--box-shadow-suave); */
+    border: 1px solid var(--blanco-gris-claro); /* Borde mas sutil */
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.beneficio-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(var(--azul-principal-rgb, 5, 76, 142), 0.08);
+}
+
+.icono-beneficio {
+    font-size: 2.5rem; /* Tamano del emoji/icono */
+    color: var(--azul-principal);
+    display: block;
+    margin-bottom: 15px;
+    line-height: 1;
+}
+
+.beneficio-item h3 {
+    font-size: 1.25rem;
+    color: var(--azul-oscuro-contraste);
+    margin-bottom: 10px;
+}
+
+.beneficio-item p {
+    font-size: 0.9rem;
+    color: var(--gris-azulado-texto);
+    line-height: 1.6;
+}
+
+/* --- ESTILOS PARA NUEVA SECCION Productos para Distribucion (GALERIA) --- */
+.productos-para-distribucion {
+    padding-top: 50px;
+    padding-bottom: 60px;
+}
+
+.productos-para-distribucion .subtitulo-seccion-dist {
+    text-align: center;
+    font-size: 1rem;
+    color: var(--gris-azulado-texto);
+    margin-top: -20px;
+    margin-bottom: 40px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.galeria-productos-distribucion {
+    display: flex; /* Habilita el comportamiento flex para los items internos */
+    width: 100%;
+    height: 280px; /* Altura de la galeria. Ajusta este valor segun tus imagenes y preferencias */
+    /* background-color: var(--blanco-gris-claro); Opcional: si quieres un fondo diferente al de la seccion */
+    border-radius: var(--border-radius-general);
+    overflow: hidden; /* Esencial para que las imagenes no se desborden al escalar */
+    padding: 10px; /* Un pequeno espacio alrededor de la galeria */
+    gap: 10px; /* Espacio entre las imagenes cuando estan colapsadas */
+    margin-top: 30px;
+}
+
+.galeria-productos-distribucion .producto-dist-item-hover { /* Cada <figure> */
+    margin: 0; /* Resetea margen por defecto de figure */
+    width: 0px; /* Inicia colapsada */
+    flex-grow: 1; /* Permite que los items crezcan y ocupen el espacio disponible */
+    position: relative; /* Para posicionar el figcaption absolutamente dentro */
+    transition: width 0.65s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.5s ease; /* Transicion suave y elastica para el ancho */
+    border-radius: 10px;
+    overflow: hidden; /* Asegura que la imagen redondeada no se salga */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    cursor: pointer;
+}
+
+.galeria-productos-distribucion .producto-dist-item-hover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Hace que la imagen cubra el espacio, puede recortar si no coincide el aspect ratio */
+    opacity: 0.7; /* Imagen un poco transparente inicialmente */
+    transition: opacity .5s ease, filter .5s ease, transform .5s ease; /* Transiciones para la imagen */
+    display: block; /* Evita espacio extra debajo de la imagen */
+    transform: scale(1.1); /* Un ligero zoom inicial para dar efecto al hacer hover */
+}
+
+.galeria-productos-distribucion .producto-dist-item-hover:hover {
+    width: 400px; /* <<<--- ESTE ES EL ANCHO AL QUE SE EXPANDIRA EL ITEM. ¡AJUSTALO! */
+    opacity: 1;
+    box-shadow: 0 10px 35px rgba(var(--azul-principal-rgb, 5, 76, 142), 0.25); /* Sombra mas pronunciada al hacer hover */
+    z-index: 10; /* Para que se ponga al frente de otros items si se superponen */
+}
+
+.galeria-productos-distribucion .producto-dist-item-hover:hover img {
+    opacity: 1; /* Imagen totalmente opaca */
+    filter: contrast(100%); /* Puedes ajustar o quitar este filtro */
+    transform: scale(1); /* La imagen vuelve a su tamano normal (quita el zoom inicial) */
+}
+
+.galeria-productos-distribucion .producto-dist-item-hover figcaption {
+    text-align: center;
+    font-size: 0.95rem;
+    font-weight: 600; /* Texto del caption mas grueso */
+    color: var(--blanco-puro);
+    padding: 12px 8px;
+    background: linear-gradient(to top, rgba(var(--azul-principal-rgb, 5, 76, 142), 0.9), rgba(var(--azul-principal-rgb, 5, 76, 142), 0.5)); /* Degradado para el fondo del caption */
+    position: absolute; /* Para superponerlo a la imagen */
+    bottom: -100%; /* Inicia completamente fuera de la vista (por abajo) */
+    left: 0;
+    width: 100%;
+    opacity: 0; /* Inicia invisible */
+    transition: opacity 0.4s ease 0.2s, bottom 0.4s cubic-bezier(0.23, 1, 0.32, 1) 0.2s; /* Transicion con retraso para que aparezca despues de expandir */
+    box-sizing: border-box; /* Para que el padding no afecte el width total */
+}
+
+.galeria-productos-distribucion .producto-dist-item-hover:hover figcaption {
+    opacity: 1;
+    bottom: 0; /* El caption sube y se muestra */
+}
+
+/* Estilo especial para el item "Y Mucho Mas!" */
+.galeria-productos-distribucion .producto-dist-item-hover.especial-dist img {
+    opacity: 0.6; /* Un poco mas tenue para diferenciarlo */
+}
+.galeria-productos-distribucion .producto-dist-item-hover.especial-dist:hover img {
+    opacity: 0.9;
+}
+.galeria-productos-distribucion .producto-dist-item-hover.especial-dist figcaption {
+    background: linear-gradient(to top, rgba(var(--gris-azulado-texto-rgb, 110, 128, 152), 0.85), rgba(var(--gris-azulado-texto-rgb, 110, 128, 152), 0.4));
+}
+
+
+/* --- Seccion Formulario Distribuidores --- */
+.formulario-distribuidores-seccion {
+    /* padding ya viene de .section-padding */
+}
+
+.container-form-distribuidores {
+    max-width: 860px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: var(--blanco-puro);
+    padding: 30px 40px 40px 40px;
+    border-radius: var(--border-radius-general);
+    box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+}
+
+.texto-formulario { /* Reutilizado de reparaciones.css o contacto.css */
+    /* text-align: center;
+    margin-bottom: 30px;
+    font-size: 1rem;
+    color: var(--gris-azulado-texto);
+    line-height: 1.6; */
+}
+
+.distribuidor-form .form-fila {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+@media (min-width: 768px) { /* Dos columnas para el form de distribuidores */
+    .distribuidor-form .form-fila {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.distribuidor-form .form-grupo {
+    margin-bottom: 0;
+}
+.distribuidor-form .form-grupo-full {
+    grid-column: 1 / -1;
+    margin-bottom: 20px;
+}
+.distribuidor-form .form-grupo-full:last-of-type {
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.distribuidor-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--azul-oscuro-contraste);
+    font-size: 0.9rem;
+}
+
+.distribuidor-form input[type="text"],
+.distribuidor-form input[type="email"],
+.distribuidor-form input[type="tel"],
+.distribuidor-form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius-general);
+    font-family: var(--fuente-principal);
+    font-size: 1rem;
+    color: var(--negro-texto-principal);
+    background-color: var(--blanco-puro);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.06);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.distribuidor-form input[type="text"]:focus,
+.distribuidor-form input[type="email"]:focus,
+.distribuidor-form input[type="tel"]:focus,
+.distribuidor-form textarea:focus {
+    border-color: var(--azul-principal);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.06), 0 0 0 3px rgba(var(--azul-principal-rgb, 5, 76, 142), 0.2);
+    outline: none;
+}
+
+.distribuidor-form textarea {
+    resize: vertical;
+    min-height: 100px; /* Un poco mas corto para este form */
+}
+
+.distribuidor-form .mensaje-error { /* Reutilizado */
+    /* display: block;
+    color: #e74c3c;
+    font-size: 0.85rem;
+    margin-top: 5px;
+    min-height: 1em; */
+}
+
+.distribuidor-form .btn-enviar-form { /* Reutilizado */
+    /* padding: 12px 35px;
+    font-size: 1.05rem; */
+}
+
+.form-status-message { /* Reutilizado */
+    /* Estilos ya definidos */
+}
+/* .form-status-message.exito { ... } */
+/* .form-status-message.error { ... } */

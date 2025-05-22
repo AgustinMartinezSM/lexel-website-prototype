@@ -1,0 +1,406 @@
+/* css/nosotros.css */
+
+.pagina-nosotros {
+    /* Estilos generales si son necesarios para la pagina en si */
+}
+
+/* --- Seccion Hero (Estilos Base para Modo Claro) --- */
+.nosotros-hero {
+    background: linear-gradient(rgba(var(--azul-principal-rgb), 0.85), rgba(var(--azul-principal-rgb), 0.95)),
+                url('https://via.placeholder.com/1920x600/6E8098/FFFFFF?text=Tecnologia+e+Innovacion+Lexel') center center/cover no-repeat;
+    color: var(--blanco-puro); /* Color de texto general para esta seccion en MODO CLARO */
+    text-align: center;
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.hero-titulo-nosotros { /* h1 */
+    font-size: 2.8rem;
+    color: var(--blanco-puro); /* Titulo en MODO CLARO */
+    font-weight: 800;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+.hero-subtitulo-nosotros { /* p */
+    font-size: 1.2rem;
+    color: var(--amarillo-principal); /* Subtitulo en MODO CLARO */
+    max-width: 800px;
+    margin: 0 auto 20px auto;
+    line-height: 1.7;
+    font-weight: 500;
+}
+
+/* --- Seccion Nuestros Pilares --- */
+.nuestros-pilares {
+    /* bg-light ya le da un fondo */
+}
+
+.pilares-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 35px;
+}
+
+.pilar-item {
+    background-color: var(--blanco-puro);
+    padding: 30px;
+    border-radius: var(--border-radius-general);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    text-align: center;
+    border-top: 5px solid transparent; /* Borde superior para efecto hover */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-top-color 0.3s ease;
+}
+
+.pilar-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 25px rgba(var(--azul-principal-rgb, 5, 76, 142), 0.12);
+    border-top-color: var(--amarillo-principal); /* El borde amarillo aparece al hacer hover */
+}
+
+.pilar-icono {
+    font-size: 3rem; /* Iconos grandes */
+    color: var(--azul-principal);
+    margin-bottom: 20px;
+    line-height: 1;
+    transition: transform 0.3s ease;
+}
+
+.pilar-item:hover .pilar-icono {
+    transform: scale(1.15) rotate(5deg); /* Efecto al icono en hover */
+}
+
+.pilar-item h3 {
+    font-size: 1.4rem;
+    color: var(--azul-principal);
+    margin-bottom: 15px;
+}
+
+.pilar-item p {
+    font-size: 0.95rem;
+    color: var(--gris-azulado-texto);
+    line-height: 1.6;
+}
+
+/* --- Seccion Nuestra Historia --- */
+.nuestra-historia .section-title {
+    /* Estilos ya definidos */
+}
+
+.historia-contenido {
+    display: grid;
+    grid-template-columns: 1fr; /* Una columna en movil */
+    gap: 30px;
+    align-items: center;
+}
+
+@media(min-width: 992px) {
+    .historia-contenido {
+        grid-template-columns: 2fr 1fr; /* Texto mas ancho que la imagen */
+        gap: 50px;
+    }
+}
+
+.historia-texto p {
+    font-size: 1rem;
+    line-height: 1.8; /* Buena interlinea para lectura */
+    margin-bottom: 1.5em;
+    color: var(--negro-texto-principal);
+}
+
+.historia-texto .futuro-texto { /* Para destacar el ultimo parrafo */
+    font-weight: 500;
+    color: var(--azul-oscuro-contraste);
+    border-left: 3px solid var(--amarillo-principal);
+    padding-left: 15px;
+}
+
+.historia-imagen-placeholder {
+    width: 100%;
+    height: 300px;
+    background-color: var(--gris-azulado-texto);
+    opacity: 0.6; /* Imagen un poco mas sutil */
+    border-radius: var(--border-radius-general);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--blanco-puro);
+    font-size: 1.5rem;
+    font-style: italic;
+    box-shadow: var(--box-shadow-suave);
+}
+
+
+/* --- Seccion Por Que Elegirnos (NUEVO ESTILO CON TARJETAS) --- */
+.por-que-elegirnos {
+    /* bg-light ya esta aplicado desde el HTML */
+    position: relative; /* Para posibles pseudo-elementos decorativos */
+    overflow: hidden; /* Si usamos pseudo-elementos que se salgan un poco */
+}
+
+.por-que-elegirnos .section-title {
+    margin-bottom: 15px; /* Menos margen si hay subtitulo */
+}
+
+.subtitulo-seccion-elegirnos {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--gris-azulado-texto);
+    margin-bottom: 50px; /* Espacio antes de las tarjetas */
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ventajas-grid {
+    display: grid;
+    /* Por defecto 1 columna, luego ajustamos para mas grandes */
+    grid-template-columns: 1fr;
+    gap: 30px; /* Espacio entre tarjetas */
+}
+
+/* Para tablets (2 columnas) */
+@media (min-width: 600px) {
+    .ventajas-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+}
+
+/* Para desktop (3 columnas) */
+@media (min-width: 992px) {
+    .ventajas-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+}
+
+.ventaja-card {
+    background-color: var(--blanco-puro);
+    padding: 30px 25px;
+    border-radius: 10px; /* Bordes mas redondeados */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+    text-align: center;
+    position: relative; /* Para el borde animado */
+    overflow: hidden; /* Para que el borde animado no se salga mucho */
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border-bottom: 4px solid transparent; /* Borde inferior inicial transparente */
+}
+
+.ventaja-card::before { /* Pseudo-elemento para efecto de fondo en hover */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, var(--azul-principal), var(--azul-oscuro-contraste));
+    opacity: 0;
+    z-index: 0;
+    transition: opacity 0.4s ease;
+    border-radius: इन्हेरिट; /* Hereda el borde redondeado de la tarjeta */
+}
+
+.ventaja-card:hover {
+    transform: translateY(-10px) scale(1.02); /* Se eleva y agranda un poquito */
+    box-shadow: 0 15px 30px rgba(var(--azul-principal-rgb, 5, 76, 142), 0.15);
+    border-bottom-color: var(--amarillo-principal); /* Borde inferior amarillo al hacer hover */
+}
+
+.ventaja-card:hover::before { /* Muestra el fondo degradado al hacer hover */
+    opacity: 0.05; /* Una opacidad muy sutil para el fondo */
+}
+
+.ventaja-card > * { /* Para que el contenido de la card este por encima del pseudo-elemento */
+    position: relative;
+    z-index: 1;
+}
+
+.ventaja-icono {
+    font-size: 2.8rem;
+    color: var(--azul-principal);
+    margin-bottom: 20px;
+    display: inline-block; /* Para que no ocupe toodo el ancho */
+    line-height: 1;
+    background-color: rgba(var(--amarillo-principal-rgb, 255, 249, 165), 0.3);
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.ventaja-card:hover .ventaja-icono {
+    transform: rotateY(360deg) scale(1.1); /* El icono gira y se agranda */
+    background-color: var(--amarillo-principal);
+    color: var(--azul-oscuro-contraste);
+}
+
+.ventaja-card h3 {
+    font-size: 1.25rem;
+    color: var(--azul-principal);
+    margin-bottom: 12px;
+    font-weight: 700; /* Titulo de la ventaja mas marcado */
+    transition: color 0.3s ease;
+}
+
+/* .ventaja-card:hover h3 { */
+    /* color: var(--blanco-puro); Si el fondo se oscureciera mucho */
+/* } */
+
+.ventaja-card p {
+    font-size: 0.9rem;
+    color: var(--gris-azulado-texto);
+    line-height: 1.65;
+    transition: color 0.3s ease;
+}
+
+
+/* --- Seccion Call to Action (CTA) (Estilos Base para Modo Claro) --- */
+.nosotros-cta {
+    background-color: var(--azul-oscuro-contraste); /* Fondo en MODO CLARO */
+    color: var(--blanco-puro); /* Texto general en MODO CLARO */
+    text-align: center; /* Aseguramos centrado del contenido */
+}
+
+.nosotros-cta h2 {
+    font-size: 2rem;
+    color: var(--blanco-puro); /* Titulo en MODO CLARO */
+    margin-bottom: 15px;
+}
+
+.nosotros-cta p {
+    font-size: 1.1rem;
+    color: #f0f0f0; /* Un blanco un poco menos brillante para parrafo en MODO CLARO, podria ser una variable */
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-botones-nosotros .btn {
+    margin: 10px; /* Espacio alrededor de los botones */
+}
+.cta-botones-nosotros .btn-primary { /* Boton amarillo en MODO CLARO */
+    background-color: var(--amarillo-principal);
+    color: var(--azul-oscuro-contraste); /* Texto oscuro sobre amarillo */
+    border-color: var(--amarillo-principal);
+}
+.cta-botones-nosotros .btn-primary:hover {
+    background-color: #E0D78A; /* Un amarillo mas oscuro para el hover */
+    border-color: #E0D78A;
+    color: var(--azul-oscuro-contraste);
+}
+.cta-botones-nosotros .btn-secondary { /* Boton contorno blanco en MODO CLARO */
+    background-color: transparent;
+    color: var(--blanco-puro);
+    border-color: var(--blanco-puro);
+}
+.cta-botones-nosotros .btn-secondary:hover {
+    background-color: var(--blanco-puro);
+    color: var(--azul-oscuro-contraste); /* Texto oscuro al hacer hover */
+}
+
+/* Responsive adjustments for this page can be added to responsive.css or here if specific */
+@media (max-width: 767px) {
+    .hero-titulo-nosotros {
+        font-size: 2.2rem;
+    }
+    .hero-subtitulo-nosotros {
+        font-size: 1.1rem;
+    }
+    .pilar-item h3 {
+        font-size: 1.3rem;
+    }
+    .historia-contenido {
+        grid-template-columns: 1fr; /* Asegurar una columna en movil */
+    }
+    .historia-imagen-placeholder {
+        height: 200px; /* Imagen mas pequena en movil */
+        margin-top: 20px;
+    }
+    .lista-ventajas li {
+        font-size: 1rem;
+        padding: 12px 15px;
+    }
+    .nosotros-cta h2 {
+        font-size: 1.8rem;
+    }
+    .cta-botones-nosotros .btn {
+        margin-bottom: 15px; /* Apilar botones en movil */
+        display: block;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .cta-botones-nosotros .btn:last-child {
+        margin-bottom: 0;
+    }
+}
+
+/* --- Hero Section en Modo Oscuro --- */
+body.dark-mode .nosotros-hero {
+    /* El fondo del hero en modo oscuro usa --azul-principal-rgb, que se redefine a un azul brillante (100, 181, 246).
+       La imagen de fondo placeholder es oscura, por lo que el fondo general sera un azul brillante/medio.
+       Necesitamos texto claro para contrastar. */
+    color: var(--negro-texto-principal); /* Texto general claro del modo oscuro (#ECEFF1 o #FAFAFA) */
+}
+
+body.dark-mode .hero-titulo-nosotros {
+    color: #FFFFFF; /* Blanco puro para el titulo principal, para maximo impacto */
+}
+
+body.dark-mode .hero-subtitulo-nosotros {
+    /* El fondo es azul brillante. El amarillo brillante (var(--amarillo-principal) en dark mode) puede vibrar mucho.
+       Probemos con un blanco un poco mas suave o el texto principal del modo oscuro. */
+    color: rgba(255, 255, 255, 0.85); /* Blanco con ligera transparencia */
+    /* O tambien podria ser: color: var(--negro-texto-principal); */
+}
+
+
+/* --- Call to Action (CTA) Section en Modo Oscuro --- */
+body.dark-mode .nosotros-cta {
+    /* El fondo de esta seccion en modo oscuro es var(--azul-oscuro-contraste),
+       que se redefine a #90CAF9 (un azul claro / celeste).
+       Por lo tanto, el texto NECESITA ser oscuro. */
+    background-color: var(--azul-oscuro-contraste); /* Fondo celeste */
+    color: #0D2033; /* Texto general MUY oscuro para contrastar con el fondo celeste */
+}
+
+body.dark-mode .nosotros-cta h2 {
+    color: #002A4E; /* Un azul muy oscuro para el titulo, casi negro */
+}
+
+body.dark-mode .nosotros-cta p {
+    /* El fondo es celeste. El texto debe ser oscuro. */
+    color: #1A3B58; /* Un azul oscuro pero legible para el parrafo */
+}
+
+body.dark-mode .cta-botones-nosotros .btn-primary {
+    /* Fondo del boton es var(--amarillo-principal) -> #FFEE58 (amarillo brillante) */
+    background-color: var(--amarillo-principal);
+    color: #4A3B00; /* Texto marron muy oscuro para el boton amarillo */
+    border-color: var(--amarillo-principal);
+}
+
+body.dark-mode .cta-botones-nosotros .btn-primary:hover {
+    background-color: #E0D78A; /* Amarillo mas apagado */
+    color: #4A3B00; /* Mantenemos texto oscuro */
+    border-color: #D1C47A;
+}
+
+body.dark-mode .cta-botones-nosotros .btn-secondary {
+    /* Fondo del CTA es celeste (#90CAF9). Boton de contorno. */
+    background-color: transparent;
+    color: #002A4E; /* Texto del boton oscuro */
+    border-color: #002A4E; /* Borde oscuro */
+}
+
+body.dark-mode .cta-botones-nosotros .btn-secondary:hover {
+    background-color: #002A4E; /* Fondo oscuro al hacer hover */
+    color: var(--blanco-puro); /* Texto se vuelve el color de fondo de las tarjetas del modo oscuro (#1E1E1E) o blanco */
+}

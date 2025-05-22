@@ -1,0 +1,217 @@
+/* css/header.css */
+
+/* ---------- ESTILOS DEL HEADER ---------- */
+
+.site-header {
+    background-color: var(--blanco-puro);
+    padding: 15px 0;
+    box-shadow: 0 2px 10px rgba(var(--negro-texto-principal-rgb, 0,0,0), 0.08); /* Usar variable para sombra si es posible */
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+body.dark-mode .site-header { /* Sombra en modo oscuro */
+    box-shadow: 0 2px 10px rgba(var(--negro-texto-principal-rgb, 0,0,0), 0.25);
+}
+
+
+.header-container {
+    display: flex;
+    align-items: center;
+    /* El 'gap' aqui puede ser opcional si los margenes de los hijos lo manejan,
+       o puedes mantenerlo para un espaciado minimo entre logo y nav.
+       Si .main-navigation tiene margin-left y .header-actions tiene margin-left: auto,
+       el gap aqui no afectara el posicionamiento derecha/izquierda de los bloques principales. */
+    /* gap: 20px; */
+}
+
+.logo { /* Contenedor del logo */
+    flex-shrink: 0; /* Para que el logo no se encoja si el espacio es poco */
+}
+.logo h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    color: var(--azul-principal);
+    font-weight: bold;
+}
+.logo a {
+    text-decoration: none;
+}
+
+.main-navigation { /* Contenedor de la lista de enlaces principal */
+    margin-left: 30px; /* Espacio entre el logo y el menu de navegacion. Ajusta este valor. */
+    flex-grow: 1; /* Permite que la navegacion ocupe espacio, ayudando a empujar las acciones */
+                  /* Pero si queremos que solo ocupe lo que necesita, no es necesario el flex-grow */
+}
+
+.main-navigation ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Para alinear los <li> en desktop */
+}
+
+.main-navigation li {
+    margin-left: 50px; /* Espacio entre cada item del menu */
+}
+.main-navigation li:first-child {
+    margin-left: 100; /* El primer item no necesita margen a la izquierda */
+}
+
+
+.main-navigation a {
+    font-family: var(--fuente-titulos);
+    font-weight: 500;
+    color: var(--azul-oscuro-contraste);
+    padding: 10px 0; /* Padding para hacer el area clickeable mas grande */
+    position: relative; /* Para la linea decorativa del ::after */
+    letter-spacing: 0.5px;
+    display: block; /* Para que el padding funcione bien */
+}
+
+.main-navigation a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; /* Un poco mas abajo para que no toque el texto */
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: var(--amarillo-principal);
+    transition: width 0.3s ease;
+}
+
+.main-navigation a:hover::after,
+.main-navigation a.active::after {
+    width: 100%;
+}
+
+.main-navigation a.active {
+    color: var(--azul-principal);
+    font-weight: 700; /* Un poco mas de peso para el activo */
+}
+
+/* Contenedor para los botones de accion (carrito, modo oscuro, hamburguesa) */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Espacio entre los botones de accion */
+    margin-left: auto; /* <<<--- ESTA ES LA LINEA CLAVE para empujar este bloque a la derecha */
+}
+
+/* Boton de modo oscuro (estilos base) */
+.dark-mode-toggle-btn {
+    background: none;
+    border: 1px solid var(--gris-azulado-texto);
+    color: var(--negro-texto-principal);
+    padding: 8px 10px;
+    border-radius: var(--border-radius-general);
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    line-height: 1;
+}
+.dark-mode-toggle-btn:hover {
+    background-color: var(--amarillo-principal);
+    color: var(--azul-oscuro-contraste); /* Texto oscuro sobre amarillo */
+    border-color: var(--amarillo-principal);
+}
+body.dark-mode .dark-mode-toggle-btn {
+    border-color: var(--gris-azulado-texto); /* Usar la variable de texto secundario del modo oscuro */
+    color: var(--negro-texto-principal);
+}
+body.dark-mode .dark-mode-toggle-btn:hover {
+    background-color: var(--amarillo-principal);
+    color: #333; /* Texto oscuro sobre amarillo */
+    border-color: var(--amarillo-principal);
+}
+
+/* Icono y contador del carrito (estilos base) */
+.cart-icon-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    color: var(--negro-texto-principal);
+    text-decoration: none;
+    padding: 5px;
+}
+body.dark-mode .cart-icon-link {
+    color: var(--negro-texto-principal);
+}
+.cart-icon-link.active-cart .cart-icon-header { /* Estilo para cuando estamos en la pagina del carrito */
+    /* color: var(--amarillo-principal); Podria ser amarillo o un color distintivo */
+    transform: scale(1.1);
+}
+
+.cart-icon-header {
+    font-size: 1.5rem;
+    margin-right: 3px;
+}
+
+#cartItemCount {
+    background-color: var(--amarillo-principal);
+    color: var(--azul-oscuro-contraste);
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    min-width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+body.dark-mode #cartItemCount {
+    color: #333;
+}
+
+
+/* Boton Hamburguesa (.menu-toggle) - Estilos para DESKTOP (oculto) */
+.menu-toggle {
+    display: none; /* Oculto en desktop por defecto */
+    background: none;
+    border: none;
+    color: var(--azul-principal);
+    cursor: pointer;
+    padding: 5px;
+}
+.menu-toggle svg {
+    display: block;
+    width: 28px; /* Tamano base del SVG, se puede ajustar en responsive si es necesario */
+    height: 28px;
+    fill: var(--azul-principal); /* Color del SVG usando la variable */
+}
+body.dark-mode .menu-toggle svg {
+    fill: var(--azul-principal); /* La variable --azul-principal cambia en modo oscuro */
+}
+
+/* css/header.css o style.css */
+.mensaje-bienvenida-header {
+    font-size: 0.9rem;
+    color: var(--gris-azulado-texto);
+    margin-right: 10px;
+    white-space: nowrap;
+    align-self: center;
+}
+body.dark-mode .mensaje-bienvenida-header {
+    color: var(--gris-azulado-texto); /* La variable ya cambia para dark mode */
+}
+
+#linkPanelAdminHeader, /* Enlace "Panel Admin" */
+#btnCerrarSesionHeader { /* Boton "Cerrar Sesion" */
+    margin-right: 10px; /* Espacio a la derecha de estos elementos */
+    /* Ya usan clases .btn .btn-outline .btn-sm-padding o .btn .btn-secondary .btn-sm-padding
+       por lo que heredaran estilos. Podemos anadir margenes especificos si es necesario. */
+}
+
+/* Asegurate que .btn-sm-padding este definido */
+.btn-sm-padding {
+    padding: 6px 12px !important;
+    font-size: 0.85rem !important;
+}

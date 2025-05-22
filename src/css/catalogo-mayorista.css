@@ -1,0 +1,411 @@
+/* css/catalogo-mayorista.css */
+
+/* --- Estilos Generales de la Pagina Catalogo Mayorista --- */
+.pagina-catalogo-mayorista .section-title {
+    margin-bottom: 15px;
+}
+
+.pagina-catalogo-mayorista .subtitulo-pagina {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--gris-azulado-texto);
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+/* Contenedor de Busqueda */
+.busqueda-catalogo-container {
+    margin-bottom: 35px;
+    display: flex;
+    justify-content: center;
+}
+
+#searchCatalogoInput { /* Hereda estilos de #searchInput de productos.css si son globales o definir aqui */
+    width: 100%;
+    max-width: 700px; /* Un poco mas ancho para esta pagina */
+    padding: 12px 18px;
+    font-size: 1rem;
+    border: 1px solid var(--color-borde-general, #ccc);
+    border-radius: var(--border-radius-general);
+    font-family: var(--fuente-principal);
+    color: var(--negro-texto-principal);
+    background-color: var(--blanco-puro);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.06);
+}
+body.dark-mode #searchCatalogoInput {
+    border-color: var(--color-borde-general);
+    background-color: var(--blanco-puro);
+    color: var(--negro-texto-principal);
+}
+#searchCatalogoInput::placeholder {
+    color: var(--gris-azulado-texto);
+    opacity: 0.8;
+}
+#searchCatalogoInput:focus {
+    border-color: var(--azul-principal);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.06), 0 0 0 3px rgba(var(--azul-principal-rgb), 0.2);
+    outline: none;
+}
+
+/* Layout Principal (Sidebar y Grilla) */
+.catalogo-mayorista-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr; /* Similar a productos.html */
+    gap: 40px;
+}
+
+/* --- Estilos para la Sidebar del Catalogo --- */
+.catalogo-sidebar .widget-sidebar { /* Reutiliza estilos de .widget-sidebar de productos.css o style.css */
+    /* Si no estan globales, copia los estilos de .widget-sidebar y .widget-title aqui */
+    margin-bottom: 30px;
+    padding: 20px; /* Un poco menos de padding */
+    background-color: var(--blanco-puro);
+    border-radius: var(--border-radius-general);
+    box-shadow: var(--box-shadow-suave);
+}
+.catalogo-sidebar .widget-sidebar:last-child {
+    margin-bottom: 0;
+}
+
+.catalogo-sidebar .widget-title {
+    font-size: 1.2rem; /* Un poco mas chico */
+    color: var(--azul-principal);
+    margin-bottom: 18px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--amarillo-principal);
+    display: inline-block;
+}
+
+.catalogo-sidebar .lista-filtros { /* Para los radio buttons de tipo de articulo */
+    list-style: none;
+    padding-left: 0;
+}
+.catalogo-sidebar .lista-filtros li {
+    margin-bottom: 10px;
+}
+.catalogo-sidebar .lista-filtros label {
+    color: var(--gris-azulado-texto);
+    font-size: 0.95rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: color 0.2s ease;
+}
+.catalogo-sidebar .lista-filtros label:hover {
+    color: var(--azul-principal);
+}
+.catalogo-sidebar .lista-filtros input[type="radio"] {
+    margin-right: 10px;
+    accent-color: var(--azul-principal);
+    transform: scale(1.1);
+}
+
+.catalogo-sidebar select,
+.catalogo-sidebar input[type="text"] { /* Para filtros de marca, modelo */
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--color-borde-general, #ccc);
+    border-radius: var(--border-radius-general);
+    font-family: var(--fuente-principal);
+    font-size: 0.9rem;
+    color: var(--negro-texto-principal);
+    background-color: var(--blanco-puro);
+    margin-top: 5px; /* Espacio si el label esta arriba */
+}
+body.dark-mode .catalogo-sidebar select,
+body.dark-mode .catalogo-sidebar input[type="text"] {
+    border-color: var(--color-borde-general);
+}
+
+
+.catalogo-sidebar select:focus,
+.catalogo-sidebar input[type="text"]:focus {
+    border-color: var(--azul-principal);
+    box-shadow: 0 0 0 3px rgba(var(--azul-principal-rgb), 0.2);
+    outline: none;
+}
+
+.catalogo-sidebar .widget-limpiar-filtros .btn-outline { /* Boton limpiar filtros */
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 0.9rem;
+}
+
+
+/* --- Estilos para la Grilla Principal de Articulos del Catalogo --- */
+.catalogo-header-grilla { /* Contenedor de "Mostrando X resultados" y "Ordenar por" */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--color-borde-general, #e0e0e0);
+}
+body.dark-mode .catalogo-header-grilla {
+    border-bottom-color: var(--color-borde-general);
+}
+
+.cantidad-resultados-catalogo {
+    font-size: 0.9rem;
+    color: var(--gris-azulado-texto);
+    margin-right: 15px;
+    margin-bottom: 10px;
+}
+
+.ordenar-catalogo {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-bottom: 10px;
+}
+
+.ordenar-catalogo label {
+    margin-right: 8px;
+    font-size: 0.9rem;
+    color: var(--gris-azulado-texto);
+}
+
+.ordenar-catalogo select {
+    padding: 8px 12px;
+    border-radius: var(--border-radius-general);
+    border: 1px solid var(--color-borde-general, #ccc);
+    font-family: var(--fuente-principal);
+    color: var(--negro-texto-principal);
+    background-color: var(--blanco-puro);
+    cursor: pointer;
+}
+body.dark-mode .ordenar-catalogo select {
+    border-color: var(--color-borde-general);
+}
+
+
+/* Grilla de Items del Catalogo */
+.items-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Ajusta minmax segun diseno de tarjeta */
+    gap: 30px;
+}
+
+/* --- Estilos para Tarjetas de Articulos del Catalogo Mayorista --- */
+.item-card-mayorista {
+    background-color: var(--blanco-puro);
+    border-radius: var(--border-radius-general);
+    box-shadow: var(--box-shadow-suave);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.item-card-mayorista:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--box-shadow-elevado);
+}
+
+.item-imagen-placeholder {
+    width: 100%;
+    height: 180px; /* Altura para imagenes de fundas/templados */
+    background-color: #e9e9e9; /* Color de fondo para el placeholder */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gris-azulado-texto);
+    font-style: italic;
+    font-size: 0.9rem;
+    border-bottom: 1px solid var(--color-borde-general, #eee);
+}
+body.dark-mode .item-imagen-placeholder {
+    background-color: #333;
+    border-bottom-color: var(--color-borde-general);
+}
+.item-imagen-placeholder img { /* Si usas imagenes reales */
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* 'contain' para ver el producto completo, 'cover' para rellenar */
+}
+
+/* Estilo especifico para repuestos sin imagen o con imagen pequena/generica */
+.item-card-mayorista[data-tipo="repuesto"] .item-imagen-placeholder {
+    height: 80px; /* Menor altura si es repuesto y la imagen es generica o no hay */
+    font-size: 0.8rem;
+}
+
+
+.item-info {
+    padding: 15px 20px;
+    flex-grow: 1; /* Para que el contenido empuje el boton de accion hacia abajo */
+    display: flex;
+    flex-direction: column;
+}
+
+.item-nombre { /* h4 */
+    font-size: 1.15rem;
+    color: var(--azul-principal);
+    margin-bottom: 8px;
+    line-height: 1.3;
+}
+
+.item-tipo-repuesto,
+.item-marca-modelo-repuesto {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--negro-texto-principal);
+    margin-bottom: 5px;
+}
+.item-tipo-repuesto span,
+.item-marca-modelo-repuesto span { /* Para la etiqueta "Tipo:", "Para:" */
+    font-weight: 400;
+    color: var(--gris-azulado-texto);
+}
+
+
+.item-descripcion { /* p */
+    font-size: 0.85rem;
+    color: var(--gris-azulado-texto);
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.item-modelos,
+.item-caracteristicas { /* p o ul */
+    font-size: 0.8rem;
+    color: var(--negro-texto-principal);
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+.item-modelos strong,
+.item-caracteristicas strong {
+    color: var(--azul-oscuro-contraste);
+    font-weight: 500;
+}
+body.dark-mode .item-modelos,
+body.dark-mode .item-caracteristicas {
+    color: var(--negro-texto-principal); /* El claro del dark mode */
+}
+body.dark-mode .item-modelos strong,
+body.dark-mode .item-caracteristicas strong {
+    color: var(--azul-oscuro-contraste); /* El azul mas claro del dark mode */
+}
+
+
+.item-actions {
+    padding: 0 20px 20px 20px; /* Padding solo abajo y a los lados */
+    margin-top: auto; /* Empuja el boton al final de la tarjeta */
+    text-align: right; /* Alinea el boton a la derecha */
+}
+.item-actions .btn { /* Boton "Consultar" o similar */
+    padding: 8px 15px; /* Boton un poco mas pequeno */
+    font-size: 0.85rem;
+}
+
+/* --- Paginacion para Catalogo Mayorista --- */
+/* Reutiliza los estilos de .paginacion de productos.css o style.css */
+/* Si necesitas alguna variacion, puedes anadirla aqui con #paginacionCatalogo */
+#paginacionCatalogo {
+    margin-top: 40px;
+}
+
+
+/* --- Responsividad especifica para Catalogo Mayorista --- */
+@media (max-width: 991px) { /* Cuando la sidebar pasa arriba */
+    .catalogo-mayorista-layout {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .catalogo-sidebar {
+        margin-bottom: 20px;
+    }
+    /* Podriamos hacer los filtros de la sidebar horizontales si son pocos */
+    .catalogo-sidebar .widget-sidebar {
+        padding: 15px; /* Menos padding en widgets en movil */
+    }
+}
+
+@media (max-width: 767px) {
+    .catalogo-header-grilla {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+    .cantidad-resultados-catalogo,
+    .ordenar-catalogo {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        text-align: center; /* Centrar en movil */
+    }
+    .ordenar-catalogo {
+        justify-content: center;
+    }
+    .items-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Ajustar tamano minimo de tarjeta */
+        gap: 20px;
+    }
+    .item-card-mayorista[data-tipo="repuesto"] .item-imagen-placeholder {
+        height: 60px; /* Aun mas chica la imagen de repuesto en movil */
+    }
+}
+
+/* Mensaje de "No se encontraron articulos" */
+.no-articulos-mayorista { /* Similar a .no-productos */
+    padding: 40px 20px;
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--gris-azulado-texto);
+    background-color: var(--blanco-puro);
+    border-radius: var(--border-radius-general);
+    border: 1px dashed var(--color-borde-general, #ddd);
+    grid-column: 1 / -1; /* Para que ocupe toodo el ancho de la grilla si se usa ahi */
+}
+body.dark-mode .no-articulos-mayorista {
+    border-color: var(--color-borde-general);
+}
+
+.item-selector-modelo {
+    margin-top: 10px; /* Espacio arriba del selector */
+    margin-bottom: 10px; /* Espacio debajo del selector, antes del area de acciones */
+    text-align: left; /* Alinear a la izquierda dentro de la card */
+}
+
+.item-selector-modelo label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--gris-azulado-texto);
+    margin-bottom: 5px;
+}
+
+.item-selector-modelo select {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid var(--color-borde-general, #ccc);
+    border-radius: var(--border-radius-general);
+    font-family: var(--fuente-principal);
+    font-size: 0.9rem;
+    background-color: var(--blanco-puro);
+    color: var(--negro-texto-principal);
+    cursor: pointer;
+
+    /* Estilos para la flecha del select (copiados de reparaciones.css) */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23054C8E' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center; /* Ajusta la posicion de la flecha */
+    background-size: 14px 10px; /* Ajusta el tamano de la flecha */
+}
+body.dark-mode .item-selector-modelo select {
+    border-color: var(--color-borde-general);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='var(--azul-principal)' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E"); /* Flecha con color de variable para dark mode */
+}
+
+
+.item-selector-modelo select:focus {
+    border-color: var(--azul-principal);
+    box-shadow: 0 0 0 3px rgba(var(--azul-principal-rgb), 0.2);
+    outline: none;
+}

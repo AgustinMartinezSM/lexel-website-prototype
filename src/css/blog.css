@@ -1,0 +1,261 @@
+/* css/blog.css */
+
+/* --- Estilos para la Pagina de Listado del Blog (blog.html) --- */
+.pagina-blog .section-title {
+    margin-bottom: 15px;
+}
+
+.pagina-blog .subtitulo-pagina {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--gris-azulado-texto);
+    margin-bottom: 50px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.blog-layout {
+    /* Podria ser display: grid si anadimos sidebar mas adelante */
+}
+
+.articulos-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Una columna por defecto */
+    gap: 40px;
+}
+
+@media (min-width: 768px) {
+    .articulos-grid { /* Dos columnas en tablet */
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+}
+
+@media (min-width: 992px) {
+    .articulos-grid { /* Hasta tres columnas en desktop si hay espacio */
+        /* grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); */ /* Opcion responsiva */
+        grid-template-columns: repeat(3, 1fr);
+        gap: 35px;
+    }
+}
+
+.articulo-card {
+    background-color: var(--blanco-puro);
+    border-radius: var(--border-radius-general);
+    box-shadow: var(--box-shadow-suave);
+    overflow: hidden; /* Para que la imagen no se salga */
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.articulo-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--box-shadow-elevado);
+}
+
+.articulo-imagen-placeholder {
+    width: 100%;
+    height: 200px; /* Altura fija para la imagen destacada de la tarjeta */
+    background-color: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gris-azulado-texto);
+    font-style: italic;
+    font-size: 1rem;
+}
+body.dark-mode .articulo-imagen-placeholder {
+    background-color: #333;
+}
+
+.articulo-imagen-placeholder img { /* Si usas <img> reales */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.articulo-contenido-card {
+    padding: 20px 25px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Para que todas las cards tengan la misma altura si el contenido varia */
+}
+
+.articulo-titulo-card {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+.articulo-titulo-card a {
+    color: var(--azul-principal);
+    text-decoration: none;
+}
+.articulo-titulo-card a:hover {
+    color: var(--azul-oscuro-contraste);
+    text-decoration: underline;
+}
+
+.articulo-meta-card {
+    font-size: 0.8rem;
+    color: var(--gris-azulado-texto);
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+.articulo-meta-card .autor {
+    font-weight: 500;
+}
+
+.articulo-resumen-card {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--negro-texto-principal); /* Texto principal para el resumen */
+    margin-bottom: 20px;
+    flex-grow: 1; /* Empuja el boton "Leer Mas" hacia abajo */
+}
+body.dark-mode .articulo-resumen-card {
+    color: var(--negro-texto-principal); /* El texto claro del modo oscuro */
+}
+
+
+.articulo-contenido-card .btn-tertiary {
+    margin-top: auto; /* Alinea el boton al final de la card */
+    align-self: flex-start; /* Alinea el boton a la izquierda */
+}
+
+
+/* --- Estilos para la Pagina de Articulo Individual (articulo-blog.html) --- */
+.pagina-articulo-blog .container-articulo {
+    max-width: 800px; /* Ancho optimo para lectura */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#articuloLoading, #articuloError {
+    text-align: center;
+    padding: 40px 0;
+    font-size: 1.1rem;
+}
+#articuloError .error-mensaje {
+    color: #c0392b; margin-bottom: 20px;
+}
+
+
+.articulo-header {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--color-borde-general, #e0e0e0);
+}
+body.dark-mode .articulo-header {
+    border-bottom-color: var(--color-borde-general);
+}
+
+.titulo-principal-articulo { /* h1 del articulo */
+    font-size: 2.4rem;
+    color: var(--negro-texto-principal); /* Titulo con color principal de texto */
+    line-height: 1.3;
+    margin-bottom: 10px;
+}
+@media (max-width: 767px) {
+    .titulo-principal-articulo { font-size: 2rem; }
+}
+
+
+.articulo-meta-info {
+    font-size: 0.9rem;
+    color: var(--gris-azulado-texto);
+    margin-bottom: 25px;
+}
+.articulo-meta-info #articuloAutor {
+    font-weight: 500;
+    color: var(--negro-texto-principal); /* Autor con color de texto principal */
+}
+body.dark-mode .articulo-meta-info #articuloAutor {
+     color: var(--negro-texto-principal);
+}
+
+
+.imagen-destacada-placeholder {
+    width: 100%;
+    height: 300px; /* Altura para la imagen destacada */
+    background-color: #e0e0e0;
+    margin-bottom: 30px;
+    border-radius: var(--border-radius-general);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gris-azulado-texto);
+    font-style: italic;
+}
+body.dark-mode .imagen-destacada-placeholder {
+    background-color: #333;
+}
+
+.imagen-destacada-placeholder img { /* Si usas <img> real */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--border-radius-general);
+}
+
+
+.cuerpo-del-articulo {
+    font-size: 1.05rem; /* Tamano de fuente para el cuerpo del articulo */
+    line-height: 1.8;
+    color: var(--negro-texto-principal); /* Color principal de texto */
+}
+body.dark-mode .cuerpo-del-articulo {
+    color: var(--negro-texto-principal); /* El texto claro del modo oscuro */
+}
+
+.cuerpo-del-articulo p {
+    margin-bottom: 1.5em;
+    color: inherit; /* Hereda el color de .cuerpo-del-articulo */
+}
+
+.cuerpo-del-articulo h2 {
+    font-size: 1.7rem;
+    color: var(--azul-principal); /* Subtitulos dentro del articulo */
+    margin-top: 2em;
+    margin-bottom: 0.8em;
+}
+.cuerpo-del-articulo h3 {
+    font-size: 1.4rem;
+    color: var(--azul-oscuro-contraste);
+    margin-top: 1.8em;
+    margin-bottom: 0.7em;
+}
+
+.cuerpo-del-articulo ul,
+.cuerpo-del-articulo ol {
+    margin-bottom: 1.5em;
+    padding-left: 25px; /* Mas indentacion para listas dentro del articulo */
+}
+.cuerpo-del-articulo li {
+    margin-bottom: 0.5em;
+    color: inherit;
+}
+
+.cuerpo-del-articulo blockquote {
+    border-left: 4px solid var(--amarillo-principal);
+    padding-left: 20px;
+    margin: 2em 0;
+    font-style: italic;
+    color: var(--gris-azulado-texto);
+}
+body.dark-mode .cuerpo-del-articulo blockquote {
+    border-left-color: var(--amarillo-principal); /* El amarillo ya es brillante en modo oscuro */
+    color: var(--gris-azulado-texto); /* El gris claro del modo oscuro */
+}
+
+
+.articulo-footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--color-borde-general, #e0e0e0);
+    text-align: center; /* Centrar el boton de volver */
+}
+body.dark-mode .articulo-footer {
+    border-top-color: var(--color-borde-general);
+}

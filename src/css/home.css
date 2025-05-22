@@ -1,0 +1,373 @@
+/* css/home.css */
+
+/* ---------- ESTILOS DE LA PAGINA DE INICIO (HOME) ---------- */
+
+/* --- Hero Section (ACTUALIZADA CON CARRUSEL) --- */
+.hero-section {
+    /* background-color: var(--azul-principal); QUITAMOS ESTO */
+    /* background-image: ... QUITAMOS ESTO */
+    color: var(--blanco-puro);
+    padding: 0; /* El padding estara en los slides o en su contenido */
+    text-align: center;
+    position: relative; /* Para posicionar los controles y dots */
+    overflow: hidden; /* Para que los slides no se desborden si usamos efectos de deslizamiento */
+    min-height: 400px; /* Altura minima, ajusta o usa vh */
+    height: 60vh; /* Ejemplo: 60% de la altura de la ventana. AJUSTA ESTO. */
+    display: flex; /* Para centrar el contenido del slide si es necesario */
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-slider-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: flex; /* Para centrar .hero-slide-content */
+    align-items: center;
+    justify-content: center;
+    opacity: 0; /* Oculto por defecto */
+    visibility: hidden;
+    transition: opacity 0.8s ease, visibility 0s linear 0.8s; /* Transicion de fundido */
+    z-index: 1;
+}
+
+.hero-slide.active-slide {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.8s ease, visibility 0s linear 0s;
+    z-index: 2; /* Slide activo por encima */
+}
+
+.hero-slide-content {
+    padding: 20px;
+    max-width: 800px; /* Ancho maximo del contenido de texto */
+    /* background-color: rgba(0,0,0,0.1); Opcional: un fondo sutil para el texto si la imagen es muy clara */
+    border-radius: var(--border-radius-general);
+}
+
+.hero-slide-content h2 {
+    font-size: 2.6rem; /* Ajusta segun necesites */
+    color: #FFFFFF;
+    font-weight: 700;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    margin-bottom: 15px;
+}
+
+.hero-slide-content p {
+    font-size: 1.1rem;
+    color: #f0f0f0;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.hero-slide-content .btn { /* Estilo para los botones dentro del slide */
+    /* Ya deberian heredar de .btn y .btn-primary o .btn-secondary */
+    /* Puedes anadir especificos si es necesario */
+    padding: 12px 30px;
+    font-size: 1rem;
+}
+
+/* Controles del Slider (Flechas) */
+.slider-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 3; /* Por encima de los slides */
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+.slider-control:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+.slider-control.prev {
+    left: 15px;
+}
+.slider-control.next {
+    right: 15px;
+}
+
+/* Indicadores de Puntos */
+.slider-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 3;
+}
+
+.slider-dots .dot {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.slider-dots .dot:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+.slider-dots .dot.active-dot {
+    background-color: var(--amarillo-principal); /* O var(--blanco-puro) */
+}
+
+/* --- Hero Section (SOBRESCRITURAS PARA MODO OSCURO) --- */
+/* El modo oscuro deberia funcionar bien con el texto ya claro y el degradado.
+   Si los botones del slider o los dots necesitan ajuste, se haria aqui. */
+body.dark-mode .slider-control {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--negro-texto-principal); /* Texto claro del modo oscuro */
+}
+body.dark-mode .slider-control:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+body.dark-mode .slider-dots .dot {
+    background-color: rgba(var(--negro-texto-principal-rgb, 236, 239, 241), 0.4);
+}
+body.dark-mode .slider-dots .dot:hover {
+    background-color: rgba(var(--negro-texto-principal-rgb, 236, 239, 241), 0.7);
+}
+body.dark-mode .slider-dots .dot.active-dot {
+    background-color: var(--amarillo-principal); /* Amarillo del modo oscuro */
+}
+
+/* --- Featured Services Section --- */
+.featured-services { /* Seccion "Nuestros Servicios" en la home */
+    background-color: var(--blanco-puro); /* Usa el color de fondo de tarjeta/seccion elevada */
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.service-item {
+    background-color: var(--blanco-gris-claro); /* Fondo principal de pagina, para contrastar con .featured-services */
+    padding: 30px;
+    text-align: center;
+    border-radius: var(--border-radius-general);
+    box-shadow: var(--box-shadow-suave);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+body.dark-mode .service-item { /* Asegurar que el fondo de item contraste con el fondo de seccion en dark mode */
+    background-color: var(--blanco-puro); /* --blanco-puro es #1E1E1E en dark, --blanco-gris-claro es #121212 */
+                                        /* Si .featured-services usa --blanco-puro, este deberia usar algo diferente o igual si es el diseno */
+}
+
+
+.service-item:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--box-shadow-elevado); /* Usar variable de sombra */
+}
+
+.service-item h3 {
+    color: var(--azul-principal);
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.service-item p {
+    font-size: 0.95rem;
+    color: var(--gris-azulado-texto);
+    margin-bottom: 20px;
+    min-height: 60px;
+}
+
+/* --- Featured Products Section (en la Home) --- */
+/* La clase .products-grid y .product-card se definen en productos.css
+   o podrian estar en style.css si son muy globales.
+   Si estan en productos.css, no necesitas repetirlas aqui,
+   solo asegurate que productos.css este enlazado en index.html si usas estas clases aqui.
+   Si son solo para la home, las defines aqui: */
+.featured-products .products-grid { /* Si usas un contenedor especifico .featured-products */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+/* Si .product-card es global y ya esta en style.css o productos.css, no necesitas redefinirla. */
+/* Si no, aqui van los estilos de .product-card, .product-image-placeholder, etc. */
+
+
+/* --- Payment Methods Section --- */
+.payment-methods {
+    background-color: var(--blanco-puro); /* Fondo de seccion elevada */
+}
+.payment-methods p {
+    text-align: center;
+    font-size: 1rem;
+    color: var(--gris-azulado-texto);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --- Store Locations Section (NUEVOS ESTILOS CON IMAGENES) --- */
+.store-locations {
+    /* section-padding ya le da padding vertical */
+}
+
+.store-locations .section-title {
+    /* Estilo global ya aplicado */
+}
+
+.locations-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Una columna en movil por defecto */
+    gap: 30px;
+}
+
+@media (min-width: 768px) { /* Dos columnas para tablets y desktop */
+    .locations-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+    }
+}
+
+.location-item {
+    background-color: var(--blanco-puro);
+    border-radius: var(--border-radius-general);
+    box-shadow: var(--box-shadow-suave);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.location-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--box-shadow-elevado);
+}
+
+.location-image-container {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+}
+
+.location-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.location-details {
+    padding: 20px 25px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.location-details > div:first-child { /* Para empujar el boton hacia abajo si es necesario */
+    flex-grow: 1;
+}
+
+
+.location-item h3 {
+    font-size: 1.6rem;
+    color: var(--azul-principal);
+    margin-bottom: 12px;
+}
+
+.location-item p {
+    font-size: 0.95rem;
+    color: var(--gris-azulado-texto);
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+
+.location-item p strong {
+    color: var(--negro-texto-principal);
+}
+
+.location-item .btn-tertiary.btn-sm-padding {
+    margin-top: 15px;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    align-self: center;
+}
+
+.payment-methods .section-title {
+    margin-bottom: 45px; /* Un poco mas de espacio debajo del titulo */
+}
+
+.payment-icons-container {
+    display: flex;
+    flex-wrap: wrap; /* Para que los iconos pasen a la siguiente linea en pantallas pequenas */
+    justify-content: center; /* Centra los iconos */
+    align-items: flex-start; /* Alinea la parte superior de los items */
+    gap: 25px 35px; /* Espacio vertical y horizontal entre iconos */
+    margin-bottom: 30px; /* Espacio antes del texto de detalles */
+}
+
+.payment-icon-item {
+    display: flex;
+    flex-direction: column; /* Icono arriba, texto abajo */
+    align-items: center; /* Centra icono y texto */
+    width: 100px; /* Ancho para cada item, permite unos 5-6 por fila en desktop */
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+.payment-icon-item:hover {
+    transform: scale(1.08); /* Efecto sutil de zoom */
+}
+
+.payment-icon-item img {
+    width: 55px; /* Tamano de los iconos (SVG o PNG) */
+    height: 55px;
+    object-fit: contain; /* Para que el icono se vea completo sin deformarse */
+    margin-bottom: 10px;
+}
+
+/* Para modo oscuro, si los SVGs son de un solo color y necesitan invertirse o cambiar */
+body.dark-mode .payment-icon-item img {
+    /* Ejemplo si tus SVGs son negros y quieres que se vean blancos: */
+    /* filter: brightness(0) invert(1); */
+    /* Lo ideal es que los SVGs usen 'currentColor' para el fill y hereden el color del texto,
+       o tener versiones de iconos especificas para dark mode. */
+}
+
+.payment-icon-item span {
+    font-size: 0.85rem; /* Tamano del texto debajo del icono */
+    color: var(--negro-texto-principal); /* Color del texto (se adapta a dark mode) */
+    font-weight: 500;
+    line-height: 1.3;
+}
+/* No es necesario un body.dark-mode para el span si ya usa --negro-texto-principal */
+
+.payment-details-text { /* Parrafo con detalles adicionales */
+    text-align: center;
+    font-size: 0.9rem; /* Un poco mas pequeno que el parrafo normal */
+    color: var(--gris-azulado-texto);
+    max-width: 650px;
+    margin: 0 auto; /* Centrar el parrafo */
+    line-height: 1.6;
+}
+
+/* Si la clase .btn-sm-padding no esta definida globalmente en style.css: */
+/*
+.btn-sm-padding {
+    padding: 8px 15px !important;
+    font-size: 0.9rem !important;
+}
+*/

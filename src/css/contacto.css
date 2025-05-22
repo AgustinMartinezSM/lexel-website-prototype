@@ -1,0 +1,310 @@
+/* css/contacto.css */
+
+.pagina-contacto .section-title {
+    margin-bottom: 20px;
+}
+
+.pagina-contacto .subtitulo-pagina {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--gris-azulado-texto);
+    margin-bottom: 50px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contacto-layout {
+    display: grid;
+    grid-template-columns: 1fr; /* Una columna por defecto para moviles */
+    gap: 40px;
+}
+
+@media (min-width: 992px) { /* Dos columnas para pantallas mas grandes */
+    .contacto-layout {
+        grid-template-columns: 1fr 1.2fr; /* La columna del formulario un poco mas ancha */
+        gap: 60px;
+    }
+}
+
+.info-contacto-seccion h2,
+.formulario-contacto-seccion h2 { /* Titulos "Nuestros Locales", "Envianos tu Consulta" */
+    font-size: 1.8rem;
+    color: var(--azul-principal);
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--amarillo-principal);
+    display: inline-block;
+}
+
+.local-info { /* Contenedor para la info de cada local (direccion, horarios, Y AHORA EL MAPA) */
+    margin-bottom: 35px;
+    padding: 25px; /* Aumentamos un poco el padding para dar mas aire al mapa */
+    background-color: var(--blanco-puro);
+    border-radius: var(--border-radius-general);
+    box-shadow: var(--box-shadow-suave);
+}
+
+.local-info h3 { /* Titulo del local (Ej: Lexel Mar del Plata) */
+    font-size: 1.5rem; /* Un poco mas grande */
+    color: var(--azul-oscuro-contraste);
+    margin-bottom: 15px;
+}
+
+.local-info p,
+.info-contacto-seccion > p { /* Para "Otros Medios de Contacto" y texto dentro de .local-info */
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--gris-azulado-texto);
+}
+
+.local-info p .info-label,
+.info-contacto-seccion > p .info-label {
+    font-weight: bold;
+    color: var(--negro-texto-principal);
+}
+
+.local-info a, /* Enlaces de telefono/email dentro de .local-info */
+.info-contacto-seccion > p a { /* Enlaces en "Otros Medios de Contacto" */
+    color: var(--azul-principal);
+    text-decoration: none; /* Quitamos subrayado por defecto, se anade en hover si se quiere */
+}
+.local-info a:hover,
+.info-contacto-seccion > p a:hover {
+    color: var(--azul-oscuro-contraste);
+    text-decoration: underline; /* Subrayado en hover */
+}
+
+
+/* --- INICIO: NUEVOS ESTILOS PARA EL CONTENEDOR DEL IFRAME DEL MAPA --- */
+/* ESTILOS PARA EL MAPA COLAPSABLE */
+.mapa-toggle-btn {
+    background-color: transparent;
+    border: 1px solid var(--azul-principal);
+    color: var(--azul-principal);
+    padding: 8px 15px;
+    border-radius: var(--border-radius-general);
+    cursor: pointer;
+    display: inline-flex; /* Para alinear texto y flecha */
+    align-items: center;
+    font-family: var(--fuente-principal);
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-top: 15px;
+    margin-bottom: 5px; /* Espacio entre boton y el mapa cuando se abre */
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.mapa-toggle-btn:hover {
+    background-color: var(--azul-principal);
+    color: var(--blanco-puro); /* Texto del boton en modo claro */
+}
+
+body.dark-mode .mapa-toggle-btn {
+    border-color: var(--azul-principal); /* Azul principal es mas claro en dark mode */
+    color: var(--azul-principal);
+}
+
+body.dark-mode .mapa-toggle-btn:hover {
+    background-color: var(--azul-principal);
+    color: var(--negro-texto-principal); /* Texto claro del modo oscuro */
+}
+
+.mapa-toggle-btn .arrow-icon {
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+/* Cuando el boton esta expandido, la flecha rota */
+.mapa-toggle-btn[aria-expanded="true"] .arrow-icon {
+    transform: rotate(180deg);
+}
+
+/* Contenedor colapsable del mapa */
+.mapa-iframe-container-collapsible {
+    max-height: 0; /* Inicia colapsado */
+    overflow: hidden;
+    transition: max-height 0.5s ease-out, padding 0.5s ease-out, border 0.5s ease-out; /* Transicion suave */
+    border-radius: 6px;
+    border: 0px solid transparent; /* Borde aparece con el contenido */
+    /* margin-top ya no es necesario aqui, el boton tiene margin-bottom */
+}
+
+.mapa-iframe-container-collapsible.mapa-visible {
+    max-height: 450px; /* Altura maxima a la que se expandira. AJUSTA ESTO si tus mapas necesitan mas o menos altura. */
+    border: 1px solid var(--color-borde-general, #e0e0e0);
+    padding-top: 5px; /* Un pequeno padding cuando esta visible */
+    padding-bottom: 5px;
+    margin-top: 10px; /* Espacio arriba del mapa cuando es visible */
+}
+body.dark-mode .mapa-iframe-container-collapsible.mapa-visible {
+    border-color: var(--color-borde-general);
+}
+
+/* Wrapper interno para mantener el aspect ratio del mapa */
+.map-content-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 75%;   /* Aspect ratio 4:3. Para 16:9 usa 56.25% */
+}
+
+.map-content-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Estilos para el Formulario de Contacto (permanecen igual) */
+.contacto-form {
+    background-color: var(--blanco-puro);
+    padding: 30px;
+    border-radius: var(--border-radius-general);
+    box-shadow: var(--box-shadow-suave);
+}
+
+.form-grupo {
+    margin-bottom: 20px;
+}
+
+.form-grupo label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--azul-oscuro-contraste);
+    font-size: 0.9rem;
+}
+
+.form-grupo input[type="text"],
+.form-grupo input[type="email"],
+.form-grupo textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--color-borde-general, #ccc); /* Usar variable de borde */
+    border-radius: var(--border-radius-general);
+    font-family: var(--fuente-principal);
+    font-size: 1rem;
+    color: var(--negro-texto-principal);
+    background-color: var(--blanco-puro); /* Para que cambie en modo oscuro */
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.06);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+body.dark-mode .form-grupo input[type="text"],
+body.dark-mode .form-grupo input[type="email"],
+body.dark-mode .form-grupo textarea {
+    border-color: var(--color-borde-general); /* Borde en modo oscuro */
+}
+
+
+.form-grupo input[type="text"]:focus,
+.form-grupo input[type="email"]:focus,
+.form-grupo textarea:focus {
+    border-color: var(--azul-principal);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.06), 0 0 0 3px rgba(var(--azul-principal-rgb), 0.2);
+    outline: none;
+}
+
+.form-grupo textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-grupo .mensaje-error {
+    display: block;
+    color: #e74c3c;
+    font-size: 0.85rem;
+    margin-top: 5px;
+    min-height: 1em;
+}
+
+.btn-enviar-form { /* Se aplica al boton del formulario de contacto */
+    /* width: 100%; Ya no es full width por defecto, se centra con text-align en el padre */
+    padding: 12px 30px; /* Padding un poco mas generoso */
+    font-size: 1.05rem;
+    /* Para centrarlo si es el unico elemento en su .form-grupo: */
+    /* display: block; margin-left: auto; margin-right: auto; width: fit-content; */
+    /* O, si su .form-grupo tiene text-align: center y el boton es inline-block (por .btn) */
+}
+
+/* Si el .form-grupo que contiene el boton necesita centrarlo: */
+.contacto-form .form-grupo:last-of-type { /* Asumiendo que el ultimo es el del boton */
+    /* text-align: center; // Esto centraria el boton si es inline-block */
+}
+
+
+@media (min-width: 768px) {
+    .btn-enviar-form {
+        /* width: auto; // El estilo .btn ya deberia manejar esto */
+    }
+}
+
+.form-status-message {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: var(--border-radius-general);
+    font-size: 0.95rem;
+    text-align: center;
+}
+
+.form-status-message.exito {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #a5d6a7;
+}
+body.dark-mode .form-status-message.exito {
+    background-color: #1c3b22; /* Verde oscuro para exito en dark mode */
+    color: #a5d6a7;
+    border-color: #2e7d32;
+}
+
+.form-status-message.error {
+    background-color: #ffebee;
+    color: #c62828;
+    border: 1px solid #ef9a9a;
+}
+body.dark-mode .form-status-message.error {
+    background-color: #401a1f; /* Rojo oscuro para error en dark mode */
+    color: #ef9a9a;
+    border-color: #c62828;
+}
+
+.local-imagen-container {
+    width: 100%;
+    max-height: 300px; /* Altura maxima para la imagen, ajusta si es necesario */
+    overflow: hidden; /* Para que la imagen no se desborde si es mas alta */
+    border-radius: var(--border-radius-general);
+    margin-bottom: 20px; /* Espacio debajo de la imagen, antes de la direccion */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.local-imagen-container img {
+    width: 100%;
+    height: 100%; /* Para que intente llenar el max-height del contenedor */
+    object-fit: cover; /* Cubre el espacio, puede recortar un poco la imagen para que encaje */
+    display: block;
+}
+
+/* Ajuste para que la info del local y el mapa queden bien con la imagen */
+.local-info {
+    margin-bottom: 35px;
+    padding: 25px;
+    background-color: var(--blanco-puro);
+    border-radius: var(--border-radius-general);
+    box-shadow: var(--box-shadow-suave);
+    display: flex; /* Para mejor control interno */
+    flex-direction: column; /* Apila los elementos */
+}
+
+.local-info h3 {
+    font-size: 1.5rem;
+    color: var(--azul-oscuro-contraste);
+    margin-bottom: 15px;
+    text-align: center; /* Centramos el titulo del local */
+}

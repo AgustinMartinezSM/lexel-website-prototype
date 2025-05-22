@@ -1,0 +1,112 @@
+/* css/admin-page.css */
+
+.pagina-admin-body {
+    background-color: var(--blanco-gris-claro); /* O un color de fondo especifico para el admin */
+}
+body.dark-mode .pagina-admin-body {
+    background-color: var(--blanco-gris-claro); /* El oscuro */
+}
+
+.main-admin .section-title {
+    text-align: left;
+    margin-bottom: 10px;
+}
+.main-admin .subtitulo-pagina {
+    text-align: left;
+    margin-bottom: 40px;
+    max-width: none; /* Que ocupe el ancho */
+}
+
+.admin-seccion {
+    background-color: var(--blanco-puro);
+    padding: 25px;
+    border-radius: var(--border-radius-general);
+    box-shadow: var(--box-shadow-suave);
+    margin-bottom: 40px;
+}
+body.dark-mode .admin-seccion {
+    background-color: var(--blanco-puro); /* El fondo de tarjeta oscuro */
+}
+
+
+.sub-section-title-admin { /* Para los H2 dentro del panel */
+    font-size: 1.6rem;
+    color: var(--azul-principal);
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--color-borde-general, #eee);
+}
+body.dark-mode .sub-section-title-admin {
+    border-bottom-color: var(--color-borde-general);
+}
+
+
+.btn-admin-accion {
+    margin-bottom: 20px;
+    /* Los estilos .btn y .btn-success se definen en style.css o aqui */
+}
+
+/* Estilo para la lista de items en el panel de admin */
+.admin-lista-items {
+    /* Podriamos usar una tabla o una lista de divs */
+}
+
+.admin-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--color-borde-general, #f0f0f0);
+}
+.admin-item:last-child {
+    border-bottom: none;
+}
+body.dark-mode .admin-item {
+    border-bottom-color: var(--color-borde-general);
+}
+
+.admin-item-nombre {
+    font-size: 1rem;
+    color: var(--negro-texto-principal);
+    flex-grow: 1;
+}
+
+.admin-item-acciones .btn {
+    margin-left: 10px;
+    padding: 5px 10px; /* Botones de accion mas pequenos */
+    font-size: 0.8rem;
+}
+
+
+/* Estilos para el boton .btn-success (si no lo tienes global) */
+.btn-success {
+    background-color: #28a745; /* Verde */
+    color: white;
+    border-color: #28a745;
+}
+.btn-success:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+body.dark-mode .btn-success { /* Adaptar para modo oscuro si es necesario */
+    background-color: #34D399; /* Un verde mas brillante para dark mode */
+    color: #064E3B; /* Texto oscuro */
+    border-color: #34D399;
+}
+body.dark-mode .btn-success:hover {
+    background-color: #10B981;
+    border-color: #059669;
+}
+
+
+.footer-admin { /* Footer especifico para la pagina de admin */
+    text-align: center;
+    padding: 15px;
+    font-size: 0.85rem;
+    background-color: var(--azul-oscuro-contraste); /* Un fondo diferente al principal */
+    color: var(--blanco-puro); /* Texto claro */
+}
+body.dark-mode .footer-admin {
+    background-color: #222; /* Un gris oscuro diferente para el footer admin */
+    color: var(--gris-azulado-texto);
+}

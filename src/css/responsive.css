@@ -1,0 +1,285 @@
+/* css/responsive.css */
+
+/* ---------- ESTILOS RESPONSIVOS ---------- */
+
+/* --- Tablets y Dispositivos Medianos (ej: a partir de 768px) --- */
+@media (min-width: 768px) {
+    .logo h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero-section h2 {
+        font-size: 2.5rem;
+    }
+    .hero-section p {
+        font-size: 1.1rem;
+    }
+
+    .services-grid { /* Para la pagina de reparaciones */
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Esto es para .products-grid en la pagina de productos y relacionados */
+    /* Si tienes .products-grid en la home, tambien le aplica */
+    .products-grid,
+    .related-products-grid,
+    .items-grid { /* Para catalogo mayorista */
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .locations-grid { /* Para los locales en contacto.html */
+         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .dispositivos-marcas-grid { /* Para la seccion de dispositivos y marcas en reparaciones.html */
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .reparacion-form .form-fila { /* Para que el formulario de reparaciones tenga dos columnas */
+        grid-template-columns: 1fr 1fr;
+    }
+    .distribuidor-form .form-fila { /* Para el formulario de distribuidores */
+         grid-template-columns: 1fr 1fr;
+    }
+
+    .btn-enviar-form { /* Para que los botones de enviar no ocupen toodo el ancho en desktop */
+        width: auto;
+    }
+}
+
+
+/* --- Moviles (ej: hasta 767px) --- */
+@media (max-width: 767px) {
+    html {
+        font-size: 15px;
+    }
+
+    .container {
+        width: 95%;
+    }
+
+    /* --- HEADER EN MOVILES --- */
+    .header-container {
+        position: relative; /* Para el menu desplegable absoluto */
+        /* El display:flex y justify-content: space-between ya vienen de header.css */
+        /* gap: 10px; Podria anadirse si el logo y header-actions estan muy pegados */
+    }
+
+    /* La navegacion principal de escritorio se oculta */
+    .main-navigation ul {
+        display: none; /* Correcto */
+        flex-direction: column;
+        position: absolute;
+        top: 100%; /* Se despliega debajo del header */
+        left: 0;
+        right: 0; /* Para que ocupe toodo el ancho */
+        width: auto; /* Ancho automatico, left y right lo definen */
+        background-color: var(--blanco-puro);
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        padding: 15px 0;
+        z-index: 999; /* Por debajo del header, encima del contenido */
+    }
+    body.dark-mode .main-navigation ul { /* Fondo del menu desplegable en dark mode */
+        background-color: var(--blanco-puro); /* Que es un color oscuro en dark mode */
+        border-top: 1px solid var(--color-borde-general);
+    }
+
+
+    .main-navigation ul.active { /* Cuando el menu esta activo */
+        display: flex;
+    }
+
+    .main-navigation li {
+        margin-left: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .main-navigation a {
+        display: block;
+        padding: 15px 20px;
+        border-bottom: 1px solid var(--color-borde-general, #eee); /* Borde mas sutil */
+    }
+    body.dark-mode .main-navigation a {
+        border-bottom-color: var(--color-borde-general);
+    }
+
+    .main-navigation a::after { /* No necesitamos la linea decorativa en movil */
+        display: none;
+    }
+    .main-navigation li:last-child a {
+        border-bottom: none;
+    }
+
+    /* Contenedor de botones de accion en el header */
+    .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 8px; /* Espacio reducido entre los botones de accion */
+    }
+
+    /* Boton Hamburguesa (.menu-toggle) - YA NO ES ABSOLUTO */
+    .menu-toggle {
+        display: flex; /* Para mostrarlo en movil */
+        align-items: center;
+        justify-content: center;
+        padding: 3px; /* Padding ajustado */
+        /* Se quita position: absolute, top, right, transform, z-index de aqui */
+    }
+    .menu-toggle svg {
+        width: 26px;
+        height: 26px;
+    }
+
+    /* Boton Modo Oscuro (.dark-mode-toggle-btn) - YA NO ES ABSOLUTO */
+    .dark-mode-toggle-btn {
+        /* Se quita position: absolute, top, right, transform, z-index de aqui si lo tenia en responsive */
+        font-size: 1.1rem;
+        padding: 5px 7px;
+    }
+
+    /* Icono del Carrito */
+    .cart-icon-link {
+        padding: 2px 3px;
+    }
+    .cart-icon-header {
+        font-size: 1.3rem;
+    }
+    #cartItemCount {
+        font-size: 0.7rem;
+        padding: 1px 5px;
+        top: -4px;
+        right: -4px;
+    }
+
+    /* --- FIN HEADER EN MOVILES --- */
+
+
+    /* Ajustes generales de titulos y espaciados */
+    h1 { font-size: 2.2rem; }
+    h2, .section-title { font-size: 1.8rem; }
+    h3 { font-size: 1.5rem; }
+
+    .section-title::after {
+        width: 60px;
+        height: 3px;
+    }
+
+    .section-padding {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+    .section-padding-sm {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    /* Ajustes para secciones especificas */
+    .hero-section {
+        padding: 60px 0;
+    }
+    .hero-section h2 {
+        font-size: 2rem;
+    }
+    .hero-section p {
+        font-size: 1rem;
+    }
+
+    .services-grid, /* Reparaciones */
+    .products-grid, /* Productos */
+    .related-products-grid, /* Detalle de producto */
+    .items-grid, /* Catalogo Mayorista */
+    .locations-grid, /* Contacto */
+    .footer-grid, /* Footer */
+    .pilares-grid, /* Nosotros */
+    .articulos-grid, /* Blog */
+    .dispositivos-marcas-grid, /* Reparaciones */
+    .dm-layout { /* Reparaciones */
+        grid-template-columns: 1fr; /* Todas estas grillas a una columna */
+    }
+
+    .reparacion-form .form-fila, /* Formularios */
+    .distribuidor-form .form-fila,
+    .contacto-layout { /* Layout de contacto */
+         grid-template-columns: 1fr;
+    }
+
+
+    .service-item p { /* Reparaciones */
+        min-height: auto;
+    }
+
+    .footer-column { /* Footer */
+        text-align: center;
+    }
+    .social-media { /* Footer */
+        justify-content: center;
+    }
+    .social-media a {
+        margin-right: 0;
+    }
+
+    /* Pagina de Productos y Catalogo Mayorista */
+    .productos-layout,
+    .catalogo-mayorista-layout {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .productos-sidebar,
+    .catalogo-sidebar {
+        margin-bottom: 30px;
+    }
+
+    .productos-header-grilla,
+    .catalogo-header-grilla {
+        flex-direction: column;
+        align-items: stretch; /* Para que los hijos ocupen el ancho */
+        gap: 15px;
+    }
+    .cantidad-resultados, .cantidad-resultados-catalogo,
+    .btn-limpiar-filtros-header,
+    .ordenar-productos, .ordenar-catalogo {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        text-align: center; /* Centrar texto de botones/contadores */
+    }
+    .ordenar-productos, .ordenar-catalogo {
+        justify-content: space-between; /* Para que label y select se separen si son flex */
+        /* Si no son flex, esto no aplica y el text-align:center del padre los centrara */
+    }
+     .ordenar-productos label, .ordenar-catalogo label {
+        margin-right: auto; /* Empuja el select a la derecha */
+    }
+
+
+    /* Ajustes para la galeria de dispositivos en Reparaciones */
+    .galeria-dispositivos-reparacion {
+        height: 150px; /* Un poco menos de altura en movil */
+    }
+    .galeria-dispositivos-reparacion .dispositivo-item-hover:hover {
+        width: 200px; /* Expansion mas pequena en movil */
+    }
+    .galeria-dispositivos-reparacion .dispositivo-item-hover figcaption {
+        font-size: 0.8rem;
+        padding: 8px 5px;
+    }
+
+    /* Ajustes para la galeria de productos de distribucion */
+    .galeria-productos-distribucion {
+        height: 220px; /* Altura un poco menor en movil */
+    }
+    .galeria-productos-distribucion .producto-dist-item-hover:hover {
+        width: 300px; /* Expansion mas pequena en movil */
+    }
+     .galeria-productos-distribucion .producto-dist-item-hover figcaption {
+        font-size: 0.9rem;
+    }
+
+    /* Formulario de reparacion y distribuidores - asegurar que los inputs no se desborden */
+    .container-form-reparacion,
+    .container-form-distribuidores {
+        padding: 20px; /* Menos padding en movil */
+    }
+}

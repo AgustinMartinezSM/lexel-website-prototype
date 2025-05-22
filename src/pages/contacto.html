@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Lexel</title>
+    <link rel="icon" type="image/png" href="../images/logo/favicon-lexel.png">
+    <meta name="description" content="Contactate con Lexel para consultas, servicio tecnico o ventas. Locales en Mar del Plata y Miramar.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/contacto.css"> <link rel="stylesheet" href="../css/responsive.css">
+
+</head>
+
+<body>
+<header class="site-header">
+    <div class="container header-container">
+        <div class="logo">
+            <a href="../index.html"> <h1>LEXEL</h1>
+            </a>
+        </div>
+
+        <nav class="main-navigation">
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li> <li><a href="reparaciones.html">Servicio Tecnico</a></li>
+                <li><a href="distribuidores.html">Distribuidores</a></li>
+                <li><a href="catalogo-mayorista.html">Catalogo Mayorista</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="blog.html">Blog</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-actions">
+            <a href="carrito.html" class="cart-icon-link" aria-label="Ver carrito de compras"> <span class="cart-icon-header">🛒</span>
+                <span id="cartItemCount" class="cart-item-count">0</span>
+            </a>
+            <button id="darkModeToggle" class="dark-mode-toggle-btn" aria-label="Activar modo oscuro">
+                <span class="icon-moon">🌙</span>
+                <span class="icon-sun" style="display:none;">☀️</span>
+            </button>
+            <button class="menu-toggle" aria-label="Abrir menu">
+                <svg viewBox="0 0 100 80" width="30" height="30" fill="var(--azul-principal)">
+                    <rect width="100" height="15" rx="8"></rect>
+                    <rect y="30" width="100" height="15" rx="8"></rect>
+                    <rect y="60" width="100" height="15" rx="8"></rect>
+                </svg>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main class="pagina-contacto section-padding">
+    <div class="container">
+        <h1 class="section-title">Contactanos</h1>
+        <p class="subtitulo-pagina">Estamos para ayudarte. Podes visitarnos en nuestros locales o enviarnos un mensaje.</p>
+
+        <div class="contacto-layout">
+            <section class="info-contacto-seccion">
+                <h2>Nuestros Locales</h2>
+
+                <div class="local-info">
+                    <h3>Lexel Mar del Plata</h3>
+                    <div class="local-imagen-container">
+                        <img src="../images/locales/mdp-frente-1.jpeg" alt="Frente del local Lexel en Mar del Plata">
+                    </div>
+                    <p><strong class="info-label">Direccion:</strong> Cerrito N°28</p>
+                    <p><strong class="info-label">Horarios:</strong> Lunes a Sabados de 09:00 a 13:00 hs y 16:00 a 19:00 hs.</p>
+                    <p><strong class="info-label">Telefono:</strong> <a href="tel:+5492235481073">223-5481073</a></p>
+
+                    <button class="mapa-toggle-btn" aria-expanded="false" aria-controls="mapaContenedorMdP">
+                        <span class="mapa-toggle-texto">Ver Mapa</span>
+                        <span class="arrow-icon">▼</span> </button>
+                    <div class="mapa-iframe-container-collapsible" id="mapaContenedorMdP">
+                        <div class="map-content-wrapper">
+                            <span><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d785.6695689920974!2d-57.555475787223585!3d-38.03127917751938!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9584de7fce1d9873%3A0x599564185e9ec7b4!2sCerrito%2028%2C%20B7608AAB%20Mar%20del%20Plata%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1sen!2sar!4v1747834257756!5m2!1sen!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="local-info">
+                    <h3>Lexel Miramar</h3>
+                    <div class="local-imagen-container">
+                    <img src="../images/locales/local-miramar2.jpeg" alt="Frente del local Lexel en Mar del Plata">
+                </div>
+                    <p><strong class="info-label">Direccion:</strong> Calle 21 N°1241</p>
+                    <p><strong class="info-label">Horarios:</strong> Todos los dias de 10:00 a 13:00 hs y 18:00 a 22:00 hs.</p>
+                    <p><strong class="info-label">Telefono 1:</strong> <a href="tel:+5492291417865">2291-417865</a></p>
+                    <p><strong class="info-label">Telefono 2:</strong> <a href="tel:+5492235481073">223-5481073</a></p>
+
+                    <button class="mapa-toggle-btn" aria-expanded="false" aria-controls="mapaContenedorMiramar">
+                        <span class="mapa-toggle-texto">Ver Mapa</span>
+                        <span class="arrow-icon">▼</span>
+                    </button>
+                    <div class="mapa-iframe-container-collapsible" id="mapaContenedorMiramar">
+                        <div class="map-content-wrapper">
+                            <span><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d391.55012587696916!2d-57.838514085974836!3d-38.27019620413848!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x958510629407c927%3A0x69dd4c2c6666f443!2sC.%2021%201241%2C%20B7607%20Miramar%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1sen!2sar!4v1747834419345!5m2!1sen!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></span>
+                        </div>
+                    </div>
+                </div>
+
+             <h2>Otros Medios de Contacto</h2>
+                <p><strong class="info-label">Email:</strong> <a href="mailto:consultas@lexel.com.ar">consultas@lexel.com.ar</a> (Email de ejemplo)</p>
+                <p><strong class="info-label">WhatsApp:</strong> <a href="https://wa.me/5492230000000" target="_blank" rel="noopener noreferrer">Enviar mensaje por WhatsApp</a> (Numero de ejemplo)</p>
+
+            </section>
+
+            <section class="formulario-contacto-seccion">
+                <h2>Envianos tu Consulta</h2>
+                <form id="contactoForm" class="contacto-form">
+                    <div class="form-grupo">
+                        <label for="nombre">Nombre Completo:</label>
+                        <input type="text" id="nombre" name="nombre" required>
+                        <small class="mensaje-error"></small>
+                    </div>
+                    <div class="form-grupo">
+                        <label for="email">Correo Electronico:</label>
+                        <input type="email" id="email" name="email" required>
+                        <small class="mensaje-error"></small>
+                    </div>
+                    <div class="form-grupo">
+                        <label for="asunto">Asunto (Opcional):</label>
+                        <input type="text" id="asunto" name="asunto">
+                    </div>
+                    <div class="form-grupo">
+                        <label for="mensaje">Mensaje:</label>
+                        <textarea id="mensaje" name="mensaje" rows="6" required></textarea>
+                        <small class="mensaje-error"></small>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-enviar-form">Enviar Mensaje</button>
+                    <div id="formStatusMessage" class="form-status-message" style="display: none;"></div>
+                </form>
+            </section>
+        </div>
+    </div>
+</main>
+
+<footer class="site-footer section-padding-sm">
+    <div class="container"> <div class="footer-grid"> <div class="footer-column about-lexel"> <h4>Sobre Lexel</h4> <p>Tu tienda de confianza para productos electronicos, accesorios y servicio tecnico especializado en Mar del Plata y Miramar.</p> </div> <div class="footer-column quick-links"> <h4>Enlaces Rapidos</h4> <ul> <li><a href="../index.html">Inicio</a></li> <li><a href="productos.html">Productos</a></li> <li><a href="reparaciones.html">Servicio Tecnico</a></li> <li><a href="distribuidores.html">Distribuidores</a></li> <li><a href="nosotros.html">Nosotros</a></li> <li><a href="contacto.html">Contacto</a></li> <li><a href="blog.html">Blog</a></li> <li><a href="politica-privacidad.html">Politica de Privacidad</a></li> <li><a href="terminos-condiciones.html">Terminos y Condiciones</a></li> </ul> </div> <div class="footer-column contact-info"> <h4>Contacto</h4> <p>Mar del Plata: Cerrito N°28</p> <p>Miramar: Calle 21 N°1241</p> <p>Email: <a href="mailto:leonardosanguineri@gmail.com">leonardosanguineri@gmail.com</a></p> <p>Telefono: <a href="tel:+5492231234567">+54 9 223 5481073</a></p> </div> <div class="footer-column social-media"> <h4>Seguinos</h4> <a href="https://www.instagram.com/lexel_mdp/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Lexel"> <img src="../images/iconos/instagram-cir.png" alt="Instagram Lexel" style="width: 32px; height: 32px;"> <span>@lexel_mdp</span> </a> </div> </div> <div class="copyright"> <p>&copy; <span id="currentYear"></span> Lexel. Todos los derechos reservados. Diseñado por Agustin Martinez.</p> </div> </div>
+</footer>
+
+<script src="../js/productos-data.js"></script> <script src="../js/main.js"></script>
+</body>
+</html>

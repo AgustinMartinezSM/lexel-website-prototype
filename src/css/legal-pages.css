@@ -1,0 +1,86 @@
+/* css/legal-pages.css */
+
+.pagina-legal .section-title {
+    margin-bottom: 15px; /* Menos espacio si hay fecha debajo */
+    text-align: left; /* Alineacion a la izquierda para titulos de paginas legales */
+}
+
+.pagina-legal .section-title::after {
+    left: 0; /* Alinea la linea decorativa a la izquierda */
+    transform: translateX(0);
+    width: 100px; /* Linea un poco mas larga */
+}
+
+.fecha-actualizacion {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--gris-azulado-texto);
+    margin-bottom: 40px;
+    text-align: left;
+}
+
+.contenido-legal {
+    max-width: 800px; /* Ancho maximo para el contenido para mejor lectura */
+    /* margin: 0 auto; Si el titulo no fuera full width */
+}
+
+.contenido-legal h2 {
+    font-size: 1.6rem;
+    color: var(--azul-principal); /* O --negro-texto-principal si se prefiere mas oscuro */
+    margin-top: 30px;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--color-borde-general, #e0e0e0); /* Usa variable si esta definida o un color por defecto */
+}
+body.dark-mode .contenido-legal h2 {
+    border-bottom-color: var(--color-borde-general); /* Asegura que el borde use el color del tema oscuro */
+}
+
+
+.contenido-legal h3 {
+    font-size: 1.3rem;
+    color: var(--azul-oscuro-contraste); /* O --negro-texto-principal */
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.contenido-legal p {
+    font-size: 1rem; /* Tamano de fuente base para parrafos */
+    line-height: 1.8; /* Interlineado generoso para facilitar la lectura */
+    color: var(--negro-texto-principal); /* Texto principal, no el gris azulado mas tenue */
+    margin-bottom: 1.2em;
+}
+
+.contenido-legal ul {
+    list-style: disc;
+    margin-left: 20px; /* Indentacion estandar para listas */
+    margin-bottom: 1.2em;
+    padding-left: 15px;
+}
+
+.contenido-legal ul li {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--negro-texto-principal);
+    margin-bottom: 0.6em;
+}
+
+.contenido-legal strong {
+    font-weight: 600; /* Montserrat 500 o 700, dependiendo de la importacion */
+    color: var(--negro-texto-principal); /* Asegurar que el strong tambien cambie de color */
+}
+
+/* Adaptacion del color del texto de parrafo en modo oscuro para .contenido-legal */
+body.dark-mode .contenido-legal p,
+body.dark-mode .contenido-legal ul li,
+body.dark-mode .contenido-legal strong {
+    color: var(--negro-texto-principal); /* Deberia ser un color claro como #ECEFF1 o #FAFAFA */
+}
+
+body.dark-mode .contenido-legal h2 {
+    color: var(--azul-principal); /* El azul claro del modo oscuro */
+}
+
+body.dark-mode .contenido-legal h3 {
+    color: var(--azul-oscuro-contraste); /* El azul mas claro del modo oscuro */
+}

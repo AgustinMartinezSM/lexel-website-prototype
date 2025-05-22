@@ -1,0 +1,191 @@
+/* css/login-page.css */
+
+.pagina-login-body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--blanco-gris-claro); /* Fondo general de la pagina */
+}
+body.dark-mode .pagina-login-body {
+    background-color: var(--blanco-gris-claro); /* --blanco-gris-claro se redefine a oscuro en dark mode */
+}
+
+.main-login {
+    flex-grow: 1; /* Empuja el footer hacia abajo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 15px; /* Padding para que no pegue a los bordes en movil */
+}
+
+.login-container {
+    background-color: var(--blanco-puro); /* Fondo de la "tarjeta" de login */
+    padding: 35px 40px; /* Padding interno */
+    border-radius: var(--border-radius-general);
+    box-shadow: var(--box-shadow-elevado); /* Sombra mas pronunciada */
+    width: 100%;
+    max-width: 420px; /* Ancho maximo del formulario */
+    text-align: center;
+}
+body.dark-mode .login-container {
+    background-color: var(--blanco-puro); /* --blanco-puro se redefine a oscuro en dark mode */
+    box-shadow: var(--box-shadow-elevado); /* La variable de sombra ya cambia */
+}
+
+.login-titulo { /* h1 "Iniciar Sesion" */
+    font-size: 2rem; /* Tamano del titulo */
+    color: var(--azul-principal);
+    margin-bottom: 30px;
+    font-weight: 700; /* Un poco mas de peso */
+}
+
+.login-form .form-grupo {
+    margin-bottom: 22px; /* Espacio entre grupos de label+input */
+    text-align: left; /* Alineacion de labels e inputs */
+}
+
+.login-form .form-grupo label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--negro-texto-principal); /* Texto principal para labels */
+    font-size: 0.9rem;
+}
+body.dark-mode .login-form .form-grupo label {
+    color: var(--negro-texto-principal); /* El texto claro del modo oscuro */
+}
+
+
+.login-form .form-grupo input[type="email"],
+.login-form .form-grupo input[type="password"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--color-borde-general, #d1d1d1); /* Borde con variable */
+    border-radius: var(--border-radius-general); /* Bordes redondeados consistentes */
+    font-family: var(--fuente-principal);
+    font-size: 1rem;
+    color: var(--negro-texto-principal);
+    background-color: var(--blanco-puro);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.07); /* Sombra interna sutil */
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+body.dark-mode .login-form .form-grupo input[type="email"],
+body.dark-mode .login-form .form-grupo input[type="password"] {
+    background-color: var(--blanco-gris-claro); /* Un fondo un poco mas claro que el de la tarjeta para el input en dark */
+    color: var(--negro-texto-principal);
+    border-color: var(--color-borde-general);
+}
+
+.login-form .form-grupo input[type="email"]:focus,
+.login-form .form-grupo input[type="password"]:focus {
+    border-color: var(--azul-principal);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.07), 0 0 0 3px rgba(var(--azul-principal-rgb), 0.25);
+    outline: none;
+}
+
+.login-form .mensaje-error {
+    display: block;
+    color: #e74c3c;
+    font-size: 0.85rem;
+    margin-top: 6px;
+    min-height: 1em;
+    text-align: left;
+}
+
+/* Mensaje de error general del formulario de login (ej: credenciales incorrectas) */
+#loginErrorMessage.form-status-message.error {
+    background-color: rgba(231, 76, 60, 0.1); /* Fondo rojo suave */
+    color: #c0392b; /* Texto rojo oscuro */
+    padding: 12px 15px;
+    border-radius: var(--border-radius-general);
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    text-align: left; /* O center, segun preferencia */
+    border: 1px solid rgba(192, 57, 43, 0.3);
+}
+body.dark-mode #loginErrorMessage.form-status-message.error {
+    background-color: rgba(231, 76, 60, 0.2);
+    color: #ff7961; /* Rojo mas claro para dark mode */
+    border-color: rgba(231, 76, 60, 0.4);
+}
+
+
+.login-form .btn-login { /* Boton Ingresar */
+    display: block; /* Para que ocupe el width: 100% */
+    width: 100%;
+    padding: 12px 20px; /* Padding del boton */
+    font-size: 1.05rem;
+    font-weight: 500;
+    margin-top: 15px; /* Espacio arriba del boton */
+    /* Hereda estilos de .btn y .btn-primary de style.css */
+}
+
+.login-links {
+    margin-top: 25px;
+    font-size: 0.9rem;
+}
+
+.login-links a {
+    color: var(--azul-principal);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+.login-links a:hover {
+    text-decoration: underline;
+    color: var(--azul-oscuro-contraste); /* O un azul mas claro en hover */
+}
+
+.login-links span { /* Separador | */
+    margin: 0 8px; /* Menos espacio para el separador */
+    color: var(--gris-azulado-texto);
+    opacity: 0.7;
+}
+
+.footer-login { /* Footer para la pagina de login */
+    flex-shrink: 0; /* Para que no se encoja */
+    text-align: center;
+    padding: 20px 15px; /* Padding del footer */
+    font-size: 0.85rem;
+    color: var(--gris-azulado-texto); /* Texto del footer un poco mas tenue */
+    background-color: var(--blanco-puro); /* Fondo del footer igual al de la tarjeta de login para consistencia */
+    border-top: 1px solid var(--color-borde-general, #e0e0e0);
+}
+body.dark-mode .footer-login {
+    background-color: var(--blanco-puro); /* El color oscuro de fondo de tarjeta */
+    color: var(--gris-azulado-texto); /* El color de texto secundario del modo oscuro */
+    border-top-color: var(--color-borde-general);
+}
+
+.footer-login a {
+    color: var(--azul-principal);
+    text-decoration: none;
+}
+.footer-login a:hover {
+    text-decoration: underline;
+}
+
+/* Ajustes responsivos especificos para la pagina de login */
+@media (max-width: 480px) {
+    .login-container {
+        padding: 25px 20px; /* Menos padding en moviles muy pequenos */
+        margin: 20px; /* Margen para que no pegue a los bordes */
+        box-shadow: var(--box-shadow-suave); /* Sombra mas sutil en movil */
+    }
+    .login-titulo {
+        font-size: 1.8rem; /* Titulo mas pequeno */
+        margin-bottom: 25px;
+    }
+    .login-form .form-grupo {
+        margin-bottom: 18px;
+    }
+    .login-form .btn-login {
+        padding: 12px 15px;
+        font-size: 1rem;
+    }
+    .login-links {
+        font-size: 0.85rem;
+    }
+    .login-links span {
+        margin: 0 5px;
+    }
+}

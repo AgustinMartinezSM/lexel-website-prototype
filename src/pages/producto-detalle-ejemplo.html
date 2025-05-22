@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Detalle del Producto - Lexel</title>
+    <meta name="description" content="Informacion detallada sobre nuestros productos electronicos.">
+    <link rel="icon" type="image/png" href="../images/logo/favicon-lexel.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/producto-detalle.css">
+    <link rel="stylesheet" href="../css/productos.css"> <link rel="stylesheet" href="../css/responsive.css">
+</head>
+
+<body>
+<header class="site-header">
+    <div class="container header-container">
+        <div class="logo">
+            <a href="../index.html"> <h1>LEXEL</h1>
+            </a>
+        </div>
+
+        <nav class="main-navigation">
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="productos.html">Productos</a></li> <li><a href="reparaciones.html">Servicio Tecnico</a></li>
+                <li><a href="distribuidores.html">Distribuidores</a></li>
+                <li><a href="catalogo-mayorista.html">Catalogo Mayorista</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="blog.html">Blog</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-actions">
+            <a href="carrito.html" class="cart-icon-link" aria-label="Ver carrito de compras"> <span class="cart-icon-header">🛒</span>
+                <span id="cartItemCount" class="cart-item-count">0</span>
+            </a>
+            <button id="darkModeToggle" class="dark-mode-toggle-btn" aria-label="Activar modo oscuro">
+                <span class="icon-moon">🌙</span>
+                <span class="icon-sun" style="display:none;">☀️</span>
+            </button>
+            <button class="menu-toggle" aria-label="Abrir menu">
+                <svg viewBox="0 0 100 80" width="30" height="30" fill="var(--azul-principal)">
+                    <rect width="100" height="15" rx="8"></rect>
+                    <rect y="30" width="100" height="15" rx="8"></rect>
+                    <rect y="60" width="100" height="15" rx="8"></rect>
+                </svg>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main class="detalle-producto-pagina section-padding">
+    <div class="container">
+
+        <div class="volver-link-contenedor">
+            <a href="productos.html" class="btn btn-outline btn-sm-padding">&laquo; Volver a Productos</a>
+        </div>
+
+        <div id="infoProductoLoading">
+            <p>Cargando informacion del producto...</p>
+        </div>
+        <div id="infoProductoError" style="display: none;">
+            <p class="error-mensaje">Lo sentimos, no pudimos encontrar la informacion para este producto.</p>
+            <a href="productos.html" class="btn btn-primary">Volver a Productos</a>
+        </div>
+
+        <article class="producto-detalle-layout" id="productoDetalleContenedor" style="display: none;">
+            <section class="producto-imagen-seccion">
+                <div class="galeria-imagen-principal">
+                    <img id="imagenPrincipalProducto" src="https://via.placeholder.com/450x350/e0e0e0/6E8098?text=Cargando..." alt="Imagen principal del producto">
+                </div>
+                <div class="producto-thumbnails" id="productoThumbnailsContenedor">
+                </div>
+            </section>
+            <section class="producto-info-seccion">
+                <h1 id="productoNombre" class="nombre-producto-detalle">Nombre del Producto</h1>
+                <p class="producto-meta">
+                    Categoria: <span id="productoCategoria" class="meta-valor">N/A</span> |
+                    Marca: <span id="productoMarca" class="meta-valor">N/A</span>
+                </p>
+                <p id="productoPrecio" class="precio-producto-detalle">$0</p>
+                <div id="productoDescripcionCorta" class="descripcion-corta-detalle">
+                    <p>Cargando descripcion...</p>
+                </div>
+                <div class="producto-stock-estado">
+                    Stock: <span id="productoStock">Consultar</span>
+                </div>
+                <button id="btnConsultarProducto" class="btn btn-primary btn-accion-detalle">Consultar por este producto</button>
+                <div class="info-adicional-producto">
+                    <h3>Mas Detalles</h3>
+                    <div id="productoDescripcionCompleta">
+                    </div>
+                </div>
+            </section>
+        </article>
+
+        <section id="productosRelacionadosSeccion" class="productos-relacionados section-padding-sm" style="display: none;">
+            <h2 class="sub-section-title-left">También te podría interesar</h2>
+            <div class="products-grid related-products-grid" id="relatedProductsGridContainer">
+            </div>
+        </section>
+    </div>
+</main>
+
+<footer class="site-footer section-padding-sm">
+    <div class="container"> <div class="footer-grid"> <div class="footer-column about-lexel"> <h4>Sobre Lexel</h4> <p>Tu tienda de confianza para productos electronicos, accesorios y servicio tecnico especializado en Mar del Plata y Miramar.</p> </div> <div class="footer-column quick-links"> <h4>Enlaces Rapidos</h4> <ul> <li><a href="../index.html">Inicio</a></li> <li><a href="productos.html">Productos</a></li> <li><a href="reparaciones.html">Servicio Tecnico</a></li> <li><a href="distribuidores.html">Distribuidores</a></li> <li><a href="nosotros.html">Nosotros</a></li> <li><a href="contacto.html">Contacto</a></li> <li><a href="blog.html">Blog</a></li> <li><a href="politica-privacidad.html">Politica de Privacidad</a></li> <li><a href="terminos-condiciones.html">Terminos y Condiciones</a></li> </ul> </div> <div class="footer-column contact-info"> <h4>Contacto</h4> <p>Mar del Plata: Cerrito N°28</p> <p>Miramar: Calle 21 N°1241</p> <p>Email: <a href="mailto:leonardosanguineri@gmail.com">leonardosanguineri@gmail.com</a></p> <p>Telefono: <a href="tel:+5492231234567">+54 9 223 5481073</a></p> </div> <div class="footer-column social-media"> <h4>Seguinos</h4> <a href="https://www.instagram.com/lexel_mdp/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Lexel"> <img src="../images/iconos/instagram-cir.png" alt="Instagram Lexel" style="width: 32px; height: 32px;"> <span>@lexel_mdp</span> </a> </div> </div> <div class="copyright"> <p>&copy; <span id="currentYear"></span> Lexel. Todos los derechos reservados. Diseñado por Agustin Martinez.</p> </div> </div>
+</footer>
+
+<script src="../js/productos-data.js"></script>
+<script src="../js/main.js"></script>
+</body>
+</html>

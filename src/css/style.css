@@ -1,0 +1,363 @@
+/* ---------- ESTILOS GLOBALES Y VARIABLES ---------- */
+
+:root {
+    --azul-principal: #054C8E;
+    --amarillo-principal: #FFF9A5;
+    --blanco-gris-claro: #F5F5F5; /* Para fondos generales */
+    --gris-azulado-texto: #6E8098; /* Para texto secundario o detalles */
+    --azul-oscuro-contraste: #406E8E; /* Para contrastar con el amarillo o como azul secundario */
+    --negro-texto-principal: #333333; /* Un negro suave para el texto principal */
+    --blanco-puro: #FFFFFF;
+    --azul-principal-rgb: 5, 76, 142;
+    --amarillo-principal-rgb: 255, 249, 165;
+    --gris-azulado-texto-rgb: 110, 128, 152;
+
+    /* Fuentes definidas */
+    --fuente-principal: 'Roboto', sans-serif;
+    --fuente-titulos: 'Montserrat', sans-serif;
+
+    /* Espaciados base - AUMENTO EL ESPACIADO VERTICAL Y CORRIJO DEFINICION */
+    --padding-seccion-vertical: 30px;
+    --padding-seccion-sm-vertical: 30px;
+
+    --border-radius-general: 8px;
+    --box-shadow-suave: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+    /* VARIABLES ESPECIFICAS PARA EL FOOTER (MODO CLARO) - ACTUALIZADAS */
+        --footer-bg-color: var(--azul-principal); /* CAMBIO: Usaremos el azul mas oscuro para el footer */
+        --footer-texto-general: #B0C4DE;
+        --footer-enlaces: #D1E0F0;
+        --footer-titulos: var(--amarillo-principal);
+        --footer-borde-superior: #2E577E; /* CAMBIO: Un color que contraste con el nuevo --azul-principal del fondo */
+        --footer-copyright-texto: var(--gris-azulado-texto);
+}
+
+/* Estilo para el boton de modo oscuro (en header.css o style.css) */
+.dark-mode-toggle-btn {
+    background: none;
+    border: 1px solid var(--gris-azulado-texto); /* Borde sutil */
+    color: var(--negro-texto-principal); /* Color del icono */
+    padding: 8px 10px;
+    border-radius: var(--border-radius-general);
+    cursor: pointer;
+    font-size: 1.2rem; /* Tamano del emoji/icono */
+    margin-left: 20px; /* Espacio respecto a la navegacion */
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    line-height: 1; /* Para que los emojis se alineen bien */
+}
+
+/* --- DEFINICION DEL TEMA OSCURO --- */
+body.dark-mode {
+    --azul-principal: #58A6FF; /* Azul mas brillante para enlaces y acentos */
+    --azul-principal-rgb: 88, 166, 255;
+    --amarillo-principal: #F1E78A; /* Amarillo un poco mas suave */
+    --amarillo-principal-rgb: 241, 231, 138;
+
+    /* Fondos */
+    --blanco-gris-claro: #161B22;  /* Fondo principal de la pagina (gris oscuro azulado) */
+    --blanco-puro: #21262D;       /* Fondo de tarjetas, header (un poco mas claro que el fondo principal) */
+
+    /* Textos */
+    --gris-azulado-texto: #90A0B0;  /* Texto secundario (gris claro) */
+    --negro-texto-principal: #E0E6E9; /* Texto principal (blanco hueso) */
+
+    /* Otros azules */
+    --azul-oscuro-contraste: #79B8F3; /* Para titulos H3, H4 */
+
+    /* Sombras para modo oscuro (mas sutiles o usando colores claros) */
+    --box-shadow-suave: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombras mas oscuras o diferentes */
+    --box-shadow-elevado: 0 10px 25px rgba(0,0,0,0.3);
+
+    /* VALORES PARA LAS VARIABLES DEL FOOTER EN MODO OSCURO */
+        --footer-bg-color: var(--blanco-puro); /* Un negro azulado muy oscuro, distinto al fondo principal */
+        --footer-texto-general: #A0B0C0; /* Un gris claro para el texto */
+        --footer-enlaces: #BCCCDC;       /* Un gris un poco mas brillante para enlaces */
+        --footer-titulos: var(--amarillo-principal); /* Mantenemos el amarillo para los H4 del footer */
+        --footer-borde-superior: #2A3038; /* Borde superior mas oscuro pero visible */
+        --footer-copyright-texto: #8090A0; /* Texto del copyright un poco mas tenue */
+    }
+
+    border-color: var(--gris-azulado-texto);
+}
+/* --- FIN DEFINICION DEL TEMA OSCURO --- */
+
+.dark-mode-toggle-btn:hover {
+    background-color: var(--amarillo-principal);
+    color: var(--azul-oscuro-contraste);
+    border-color: var(--amarillo-principal);
+}
+
+body.dark-mode .dark-mode-toggle-btn { /* Estilo del boton cuando el modo oscuro esta activo */
+    border-color: var(--texto-secundario-dark); /* Borde mas claro */
+    color: var(--texto-principal-dark); /* Icono mas claro */
+}
+
+body.dark-mode .dark-mode-toggle-btn:hover {
+    background-color: var(--amarillo-principal-dark);
+    color: var(--fondo-principal-dark); /* Texto oscuro sobre amarillo */
+    border-color: var(--amarillo-principal-dark);
+}
+
+/* Un pequeno reset para empezar limpio */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--fuente-principal);
+    line-height: 1.6;
+    color: var(--negro-texto-principal);
+    background-color: var(--blanco-gris-claro);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: var(--azul-principal);
+    transition: color 0.3s ease;
+}
+
+a:hover,
+a:focus {
+    color: var(--azul-oscuro-contraste);
+    outline: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--fuente-titulos);
+    color: var(--azul-principal);
+    margin-bottom: 0.75em;
+    line-height: 1.2;
+}
+
+h1 { font-size: 2.8rem; }
+h2 { font-size: 2.2rem; }
+h3 { font-size: 1.8rem; }
+h4 { font-size: 1.4rem; }
+
+p {
+    margin-bottom: 1em;
+    color: var(--gris-azulado-texto);
+}
+
+ul, ol {
+    list-style-position: inside;
+    padding-left: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: var(--border-radius-general);
+    font-family: var(--fuente-titulos);
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary {
+    background-color: var(--azul-principal);
+    color: var(--blanco-puro);
+    border-color: var(--azul-principal);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: var(--azul-oscuro-contraste);
+    border-color: var(--azul-oscuro-contraste);
+    color: var(--blanco-puro);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(5, 76, 142, 0.3);
+}
+
+.btn-secondary {
+    background-color: var(--amarillo-principal);
+    color: var(--azul-oscuro-contraste);
+    border-color: var(--amarillo-principal);
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+    background-color: #E0D78A;
+    border-color: #E0D78A;
+    color: var(--azul-oscuro-contraste);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 249, 165, 0.4);
+}
+
+.btn-tertiary {
+    background-color: transparent;
+    color: var(--azul-principal);
+    border-color: var(--azul-principal);
+}
+
+.btn-tertiary:hover,
+.btn-tertiary:focus {
+    background-color: var(--azul-principal);
+    color: var(--blanco-puro);
+}
+
+/* Clases de utilidad para padding de secciones - CORREGIDA LA APLICACION */
+.section-padding {
+    padding-top: var(--padding-seccion-vertical);
+    padding-bottom: var(--padding-seccion-vertical);
+}
+
+.section-padding-sm {
+    padding-top: var(--padding-seccion-sm-vertical);
+    padding-bottom: var(--padding-seccion-sm-vertical);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.2rem;
+    color: var(--azul-principal);
+    margin-bottom: 40px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: var(--amarillo-principal);
+    border-radius: 2px;
+}
+
+.section-title-sm {
+    text-align: center;
+    font-size: 1.6rem;
+    color: var(--azul-oscuro-contraste);
+    margin-bottom: 20px; /* Este margen es el que esta debajo del titulo "Medios de Pago Aceptados" */
+}
+
+.text-center {
+    text-align: center;
+}
+
+.bg-light {
+    background-color: var(--blanco-puro);
+}
+
+.product-image-placeholder {
+    width: 100%;
+    height: 200px;
+    background-color: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gris-azulado-texto);
+    font-style: italic;
+    border-radius: var(--border-radius-general) var(--border-radius-general) 0 0;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px; /* Anade un espacio minimo entre los elementos flexibles principales */
+}
+
+.main-navigation {
+    display: flex; /* Para alinear el boton hamburguesa y la lista ul si fuera necesario */
+    align-items: center;
+    /* No necesita ocupar toodo el espacio si solo queda el boton hamburguesa */
+}
+
+/* Boton de modo oscuro */
+.dark-mode-toggle-btn {
+    /* Tus estilos actuales estan bien, solo nos aseguramos que no tenga margenes extranos que causen conflicto */
+    margin-left: 0; /* Lo controlara el gap del header-container o un margen especifico en movil */
+}
+
+.btn-wpp, .btn-email {
+    text-decoration: none;
+    /* display: inline-block; Ya lo puse en el style del JS, pero mejor con clase */
+    /* margin-top: 15px; Ya lo puse en el style del JS */
+    /* Otros estilos que ya tengan tus .btn y .btn-success / .btn-secondary */
+}
+.btn-wpp .icono-btn,
+.btn-email .icono-btn {
+    margin-right: 8px;
+    font-size: 1.1em; /* Para que el emoji sea un poco mas grande que el texto */
+}
+
+/* En style.css o notifications.css */
+.toast-notification {
+    position: fixed;
+    bottom: 20px; /* O top: 20px */
+    right: 20px;  /* O left: 20px, o centrado con transform */
+    background-color: var(--azul-principal); /* O un verde para exito */
+    color: var(--blanco-puro);
+    padding: 15px 25px;
+    border-radius: var(--border-radius-general);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    z-index: 2000; /* Por encima de toodo */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+
+.toast-notification.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+body.dark-mode .toast-notification {
+    background-color: var(--azul-principal); /* El azul claro del modo oscuro */
+    color: var(--negro-texto-principal); /* Texto claro del modo oscuro */
+    /* Podrias necesitar ajustar la sombra si es muy oscura */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+
+/* Boton Hamburguesa (.menu-toggle) - dentro de .main-navigation */
+.menu-toggle {
+    background: none;
+    border: none;
+    color: var(--azul-principal);
+    font-size: 1.8rem;
+    cursor: pointer;
+    padding: 5px;
+    display: none; /* OCULTO en desktop por defecto */
+}
+.menu-toggle svg {
+    display: block;
+}
+body.dark-mode .menu-toggle svg {
+    fill: var(--azul-principal);
+}

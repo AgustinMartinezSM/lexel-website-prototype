@@ -1,0 +1,449 @@
+/* css/productos.css */
+
+/* --- Estilos para el layout general de la pagina de productos --- */
+.pagina-productos .section-title { /* Titulo principal "Nuestros Productos" */
+    margin-bottom: 50px;
+}
+
+.productos-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr; /* Columna fija para sidebar, resto para contenido */
+    gap: 40px; /* Espacio entre sidebar y contenido principal */
+}
+
+/* --- Estilos para la Sidebar de Productos --- */
+.productos-sidebar {
+    /* Estilos base para la sidebar si son necesarios */
+}
+
+.widget-sidebar {
+    margin-bottom: 35px; /* Espacio entre cada widget de la sidebar */
+    padding: 25px;
+    background-color: var(--blanco-puro); /* Fondo de los widgets */
+    border-radius: var(--border-radius-general);
+    box-shadow: var(--box-shadow-suave); /* Sombra suave para los widgets */
+}
+
+.widget-sidebar:last-child {
+    margin-bottom: 0; /* El ultimo widget no necesita margen inferior */
+}
+
+.widget-title { /* Titulos como "Categorias", "Filtrar por Marca" */
+    font-size: 1.3rem;
+    color: var(--azul-principal);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--amarillo-principal);
+    display: inline-block;
+}
+
+.lista-categorias,
+.lista-filtros {
+    list-style: none;
+    padding-left: 0;
+}
+
+.lista-categorias li,
+.lista-filtros li {
+    margin-bottom: 10px;
+}
+
+.lista-categorias a,
+.lista-filtros label {
+    color: var(--gris-azulado-texto);
+    font-size: 0.95rem;
+    transition: color 0.2s ease, font-weight 0.2s ease;
+    display: block;
+    cursor: pointer;
+    padding: 6px 0;
+    border-radius: 4px;
+}
+
+.lista-categorias a:hover,
+.lista-filtros label:hover {
+    color: var(--azul-principal);
+}
+
+.lista-categorias a.active-category {
+    color: var(--azul-principal);
+    font-weight: bold;
+}
+
+.lista-filtros input[type="checkbox"] {
+    margin-right: 8px;
+    accent-color: var(--azul-principal);
+    transform: scale(1.1);
+    vertical-align: middle;
+}
+
+/* Estilos para el Filtro de Rango de Precio en la Sidebar */
+.filtro-precio-controles {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.filtro-precio-controles label {
+    font-size: 0.9rem;
+    color: var(--gris-azulado-texto);
+    font-weight: 500;
+    margin-bottom: 2px;
+}
+
+.filtro-precio-controles input[type="number"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--color-borde-general, #ccc); /* Variable para borde */
+    border-radius: var(--border-radius-general);
+    font-family: var(--fuente-principal);
+    font-size: 0.95rem;
+    color: var(--negro-texto-principal);
+    background-color: var(--blanco-puro);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.06);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+body.dark-mode .filtro-precio-controles input[type="number"] {
+    border-color: var(--color-borde-general);
+}
+
+
+.filtro-precio-controles input[type="number"]:focus {
+    border-color: var(--azul-principal);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.06), 0 0 0 3px rgba(var(--azul-principal-rgb), 0.2);
+    outline: none;
+}
+
+.filtro-precio-controles input[type="number"]::-webkit-outer-spin-button,
+.filtro-precio-controles input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.filtro-precio-controles input[type="number"] {
+    -moz-appearance: textfield; /* Firefox */
+}
+
+.filtro-precio-controles .btn-block-sidebar { /* Boton Aplicar Precio */
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px 15px;
+    font-size: 0.95rem;
+}
+
+
+/* --- Estilos para la Grilla Principal de Productos --- */
+.productos-header-grilla {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--color-borde-general, #e0e0e0);
+}
+body.dark-mode .productos-header-grilla {
+    border-bottom-color: var(--color-borde-general);
+}
+
+.cantidad-resultados {
+    font-size: 0.9rem;
+    color: var(--gris-azulado-texto);
+    margin-right: 15px;
+    flex-shrink: 0;
+    margin-bottom: 10px; /* Margen para cuando se apilan */
+}
+
+.ordenar-productos {
+    display: flex;
+    align-items: center;
+    margin-left: auto; /* Empuja a la derecha si hay espacio */
+    flex-shrink: 0;
+    margin-bottom: 10px; /* Margen para cuando se apilan */
+}
+
+.ordenar-productos label {
+    margin-right: 8px;
+    font-size: 0.9rem;
+    color: var(--gris-azulado-texto);
+}
+
+.ordenar-productos select {
+    padding: 8px 12px;
+    border-radius: var(--border-radius-general);
+    border: 1px solid var(--color-borde-general, #ccc);
+    font-family: var(--fuente-principal);
+    color: var(--negro-texto-principal);
+    background-color: var(--blanco-puro);
+    cursor: pointer;
+}
+body.dark-mode .ordenar-productos select {
+    border-color: var(--color-borde-general);
+}
+
+/* Estilo para el boton "Limpiar Filtros" en el header de la grilla */
+.btn-limpiar-filtros-header {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    margin-right: 15px; /* Espacio a su derecha, antes del "Ordenar por" si estan en linea */
+    margin-bottom: 10px; /* Margen para cuando se apilan */
+    /* El estilo .btn-outline se define abajo o en style.css */
+}
+
+
+/* Estilo para un boton de tipo outline (puede estar en style.css o aqui) */
+.btn-outline {
+    background-color: transparent;
+    color: var(--azul-principal);
+    border: 2px solid var(--azul-principal);
+    /* padding y width seran ajustados por .btn-limpiar-filtros-header o si se usa en la sidebar */
+}
+
+.btn-outline:hover,
+.btn-outline:focus {
+    background-color: var(--azul-principal);
+    color: var(--blanco-puro);
+    border-color: var(--azul-principal);
+}
+
+body.dark-mode .btn-outline {
+    color: var(--azul-principal);
+    border-color: var(--azul-principal);
+}
+
+body.dark-mode .btn-outline:hover,
+body.dark-mode .btn-outline:focus {
+    background-color: var(--azul-principal);
+    color: var(--negro-texto-principal); /* Texto claro sobre el fondo azul del hover en dark mode */
+}
+
+
+/* Grilla de Productos */
+.productos-grilla-principal .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+}
+
+/* --- Estilos para Tarjeta de Producto (Product Card) --- */
+.product-card {
+    background-color: var(--blanco-puro);
+    border-radius: var(--border-radius-general);
+    box-shadow: var(--box-shadow-suave);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--box-shadow-elevado); /* Usa la variable de sombra elevada */
+}
+
+.product-image-placeholder {
+    width: 100%;
+    height: 200px;
+    background-color: #e0e0e0; /* Placeholder en modo claro */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gris-azulado-texto);
+    font-style: italic;
+}
+body.dark-mode .product-image-placeholder {
+    background-color: #333; /* Placeholder en modo oscuro */
+}
+
+.product-card h4 {
+    font-size: 1.2rem;
+    color: var(--azul-principal);
+    margin-top: 25px;
+    margin-bottom: 10px;
+    padding: 0 15px;
+    min-height: 2.4em;
+    line-height: 1.2;
+}
+
+.product-card .price {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--azul-oscuro-contraste);
+    margin-bottom: 20px;
+    padding: 0 15px;
+}
+
+.product-card .btn-tertiary {
+    margin-top: auto;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    display: inline-block;
+    width: calc(100% - 40px);
+}
+
+
+/* --- Estilos para la Paginacion --- */
+.paginacion {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.paginacion ul {
+    list-style: none;
+    padding-left: 0;
+    display: inline-flex;
+    align-items: center;
+    border-radius: var(--border-radius-general);
+    overflow: hidden;
+    box-shadow: var(--box-shadow-suave); /* Sombra suave para paginacion */
+}
+
+.paginacion li a {
+    display: block;
+    padding: 10px 15px;
+    color: var(--azul-principal);
+    background-color: var(--blanco-puro);
+    border-right: 1px solid var(--color-borde-general, #e0e0e0);
+    transition: background-color 0.2s ease, color 0.2s ease;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+body.dark-mode .paginacion li a {
+    border-right-color: var(--color-borde-general);
+}
+
+.paginacion li:last-child a {
+    border-right: none;
+}
+
+.paginacion li a:hover {
+    background-color: var(--amarillo-principal);
+    color: var(--azul-oscuro-contraste); /* Texto oscuro sobre amarillo */
+}
+body.dark-mode .paginacion li a:hover {
+    color: #333; /* Texto oscuro sobre amarillo en dark mode */
+}
+
+
+.paginacion li a.active {
+    background-color: var(--azul-principal);
+    color: var(--blanco-puro); /* Texto del boton activo, revisar contraste en dark mode */
+    font-weight: bold;
+}
+body.dark-mode .paginacion li a.active {
+    color: var(--negro-texto-principal); /* Texto claro sobre azul en dark mode */
+}
+
+
+.paginacion li a.disabled {
+    color: #aaa;
+    pointer-events: none;
+    background-color: #f0f0f0; /* Fondo para deshabilitado en modo claro */
+}
+body.dark-mode .paginacion li a.disabled {
+    background-color: #2a2a2a; /* Fondo para deshabilitado en modo oscuro */
+    color: #666;
+}
+
+/* --- Responsividad para la pagina de productos --- */
+@media (max-width: 991px) { /* Cuando la sidebar pasa arriba */
+    .productos-layout {
+        grid-template-columns: 1fr; /* Sidebar arriba, contenido abajo */
+        gap: 30px;
+    }
+    .productos-sidebar {
+        margin-bottom: 20px; /* Espacio despues de la sidebar cuando esta arriba */
+    }
+}
+
+@media (max-width: 767px) { /* Ajustes para moviles en el header de la grilla */
+    .productos-header-grilla {
+        flex-direction: column;
+        align-items: stretch; /* Que los items se estiren */
+        gap: 15px;
+    }
+    .cantidad-resultados,
+    .btn-limpiar-filtros-header,
+    .ordenar-productos {
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+    }
+    .ordenar-productos {
+        justify-content: space-between;
+    }
+    .btn-limpiar-filtros-header {
+        text-align: center;
+        padding: 10px 15px; /* Padding mas estandar para movil */
+    }
+    .productos-grilla-principal .products-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* Tarjetas un poco mas chicas si es necesario */
+        gap: 20px;
+    }
+}
+
+/* Estilo para el mensaje de "No se encontraron productos" */
+.no-productos {
+    padding: 40px 20px;
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--gris-azulado-texto);
+    background-color: var(--blanco-puro);
+    border-radius: var(--border-radius-general);
+    border: 1px dashed var(--color-borde-general, #ddd);
+}
+body.dark-mode .no-productos {
+    border-color: var(--color-borde-general);
+}
+
+/* --- Estilos para el Campo de Busqueda de Productos --- */
+.busqueda-productos-container {
+    margin-bottom: 35px; /* Espacio antes del layout de filtros/productos */
+    display: flex;
+    justify-content: center; /* Centra el input si no ocupa todo el ancho */
+}
+
+#searchInput {
+    width: 100%;
+    max-width: 600px; /* Un ancho maximo para el input */
+    padding: 12px 18px;
+    font-size: 1rem;
+    border: 1px solid var(--color-borde-general, #ccc);
+    border-radius: var(--border-radius-general);
+    font-family: var(--fuente-principal);
+    color: var(--negro-texto-principal);
+    background-color: var(--blanco-puro);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.06);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+body.dark-mode #searchInput { /* Asegurar que use los colores del modo oscuro */
+    border-color: var(--color-borde-general);
+    background-color: var(--blanco-puro); /* El fondo de tarjeta oscuro */
+    color: var(--negro-texto-principal); /* El texto claro del modo oscuro */
+}
+
+
+#searchInput::placeholder {
+    color: var(--gris-azulado-texto);
+    opacity: 0.8;
+}
+
+#searchInput:focus {
+    border-color: var(--azul-principal);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.06), 0 0 0 3px rgba(var(--azul-principal-rgb), 0.2);
+    outline: none;
+}
+
+/* Para el icono de 'limpiar' (x) que aparece en input[type="search"] en algunos navegadores */
+#searchInput::-webkit-search-cancel-button {
+    -webkit-appearance: none; /* Quita el estilo por defecto */
+    height: 1em;
+    width: 1em;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236E8098'%3E%3Cpath d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/%3E%3C/svg%3E");
+    background-size: 1em;
+    opacity: 0.7;
+}
+body.dark-mode #searchInput::-webkit-search-cancel-button {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23B0BEC5'%3E%3Cpath d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/%3E%3C/svg%3E");
+}
